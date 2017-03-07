@@ -5,7 +5,18 @@ const userSchema = new Schema({
   username: {type: String, required: true},
   password: {type: String, required: true},
   name: {type: String, required: true},
-  booking: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
+  role: {
+     type: String,
+     enum : ['EXPERT', 'TRAVELER'],
+     default : 'EXPERT'
+   },
+  age: Number,
+  interests: String,
+  description: String,
+  locations: Array,
+  languages: Array,
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   timestamps: {
     createdAt: "created_at",

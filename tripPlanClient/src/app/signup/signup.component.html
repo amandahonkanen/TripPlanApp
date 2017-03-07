@@ -1,9 +1,9 @@
-<div class="col-md-3 col-md-offset-4">
+<div class="col-md-6 col-md-offset-3">
 	<div class="panel panel-default">
 	  <div class="panel-body">
 	    <form>
 	      <div class="form-group">
-	        <label for="InputUsername">username</label>
+	        <label for="InputUsername">Username</label>
 	        <input type="text" class="form-control" id="InputUsername" placeholder="username" [(ngModel)]="newUser.username" name="username">
 	      </div>
 	      <div class="form-group">
@@ -14,6 +14,33 @@
 	        <label for="InputName">Name</label>
 	        <input type="text" class="form-control" id="InputName" placeholder="Name" [(ngModel)]="newUser.name" name="name">
 	      </div>
+				<div class="form-group">
+				<label for="RoleInput">Please select your role</label>
+				<select class="form-control" name="role" id="role">
+					<option value="EXPERT">You are an expert of a city </option>
+					<option value="TRAVELER">You want to travel </option>
+				</select>
+				</div>
+				<div class="form-group">
+					<label for="InputAge">Age</label>
+					<input type="text" class="form-control" id="InputAge" placeholder="Age" [(ngModel)]="newUser.age" name="age">
+				</div>
+				<div class="form-group">
+					<label for="InputInterests">Interests</label>
+					<input type="text" class="form-control" id="InputInterests" placeholder="Interests" [(ngModel)]="newUser.interests" name="interests">
+				</div>
+				<div class="form-group">
+					<label for="InputDescription">Description</label>
+					<input type="text" class="form-control" id="InputDescription" placeholder="Description" [(ngModel)]="newUser.description" name="description">
+				</div>
+				<div class="form-group">
+					<label for="InputLocations">Locations you are an expert on</label>
+					<input type="text" class="form-control" id="InputLocations" placeholder="Locations" [(ngModel)]="newUser.locations" name="locations">
+				</div>
+				<div class="form-group">
+					<label for="InputLanguages">Languages</label>
+					<input type="text" class="form-control" id="InputLanguages" placeholder="Language" [(ngModel)]="newUser.languages" name="languages">
+				</div>
 	      <button type="submit" class="btn btn-default btn-primary" (click)="signup()">Signup</button>
 	    </form>
 	  </div>

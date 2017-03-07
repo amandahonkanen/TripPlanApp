@@ -36,7 +36,8 @@ router.post("/login", function(req, res) {
         } else {
           var payload = {id: user._id};
           var token = jwt.sign(payload, jwtOptions.secretOrKey);
-          res.json({message: "ok", token: token});
+          console.log("login", user);
+          res.json({message: "ok", token: token, user: user});
         }
       });
     }
@@ -48,11 +49,7 @@ router.post("/signup", (req, res, next) => {
   var password = req.body.password;
   var name = req.body.name;
   var role = req.body.role;
-  var age = req.body.age;
-  var interests = req.body.interests;
-  var description = req.body.description;
-  var locations = req.body.locations;
-  var languages= req.body.languages;
+
 
   if (!username || !password) {
     res.status(400).json({ message: "Provide username and password" });
@@ -73,11 +70,6 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       name,
       role,
-      age,
-      interests,
-      description,
-      locations,
-      languages,
     });
 
     newUser.save((err, user) => {
@@ -87,11 +79,16 @@ router.post("/signup", (req, res, next) => {
         var payload = {id: user._id};
         console.log('user', user);
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
-        res.status(200).json({message: "ok", token: token});
+        res.status(200).json({message: "ok", token: token, user: user});
       	// res.status(200).json(user);
       }
     });
   });
+});
+
+router.post("/sendToken", (req, res, next) => {
+    console.log(req.body);
+    res.json({user: "currentUser"});
 });
 
 

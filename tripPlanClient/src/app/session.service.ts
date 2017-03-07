@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class SessionService implements CanActivate {
   public token: string;
+  public currentUser: Object;
+
   isAuth: EventEmitter<any> = new EventEmitter();
 
 	BASE_URL: string = 'http://localhost:3000';
@@ -18,11 +20,20 @@ export class SessionService implements CanActivate {
   ) {
       // set token if saved in local storage
       this.token = localStorage.getItem('token');
+      let userFromLocal = localStorage.getItem("user")
+      this.currentUser = JSON.parse(userFromLocal);
+      console.log("In constructor in service user", userFromLocal);
+      console.log("In constructor in service token", this.token);
       if(this.token != null) {
+        console.log("true");
         this.isAuth.emit(true);
       } else {
+        console.log("false");
         this.isAuth.emit(false);
       }
+
+
+
   }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -43,12 +54,16 @@ export class SessionService implements CanActivate {
   	return this.http.post(`${this.BASE_URL}/signup`, user)
   		.map((response) => response.json())
   		.map((response) => {
+
   			let token = response.token;
   			if (token) {
           // set token property
           this.token = token;
+
+
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('token', token );
+
           this.isAuth.emit(true);
           // return true to indicate successful login
           return true;
@@ -65,12 +80,16 @@ export class SessionService implements CanActivate {
         .map((response: Response) => {
             // login successful if there's a jwt token in the response
             let token = response.json() && response.json().token;
+            console.log(response.json().user)
             if (token) {
               // set token property
+              this.currentUser = response.json().user
+              console.log(this.currentUser)
               this.token = token;
               this.isAuth.emit(true);
               // store username and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('token', token );
+              localStorage.setItem('user', JSON.stringify(this.currentUser) );
               // return true to indicate successful login
               return true;
             } else {
@@ -86,5 +105,17 @@ export class SessionService implements CanActivate {
       this.isAuth.emit(false);
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
+  }
+
+
+  sendToken(){
+    console.log("sent from session")
+    return this.http.post(`${this.BASE_URL}/sendToken`, {token: localStorage.getItem("token")})
+    // .map((res) => res.json())
+    // .map((res) => {
+    //   console.log("receiving something")
+    //   this.currentUser = res.json()
+    // })
+    // .catch((err) => Observable.throw(err));
   }
 }

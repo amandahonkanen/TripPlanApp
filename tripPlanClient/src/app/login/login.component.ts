@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
+import { UserService } from './../user.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [UserService, SessionService]
 })
 export class LoginComponent implements OnInit {
 
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
 				        .subscribe(result => {
 				            if (result === true) {
 			                // login successful
-                      this.router.navigate(['/profile']);
+                      this.router.navigate(['profile']);
 			         			} else {
 			                // login failed
 			                this.error = 'Username or password is incorrect';

@@ -9,6 +9,7 @@ import { routes } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { SessionService } from './session.service';
+import { UserService } from './user.service';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -32,7 +33,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

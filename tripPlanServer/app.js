@@ -36,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', auth);
+app.use('/api/profile', users);
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 
 // app.use(function(req, res)

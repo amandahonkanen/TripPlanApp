@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService, SessionService]
+  providers: [UserService]
 })
 export class LoginComponent implements OnInit {
 
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private router: Router
+    private router: Router,
+    private users: UserService
   ) { }
 
   ngOnInit() {

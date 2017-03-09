@@ -49,10 +49,10 @@ router.post("/signup", (req, res, next) => {
   var password = req.body.password;
   var name = req.body.name;
   var role = req.body.role;
+  var city = req.body.city;
   var age = 0;
   var interests = [];
   var description = '';
-  var locations = [];
   var languages = [];
 
 
@@ -79,8 +79,8 @@ router.post("/signup", (req, res, next) => {
       age,
       interests,
       description,
-      locations,
       languages,
+      city: [city]
     });
 
     newUser.save((err, user) => {

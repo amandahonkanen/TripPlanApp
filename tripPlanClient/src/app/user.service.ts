@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
   BASE_URL: string = 'http://localhost:3000/api';
+  error: any;
+
 
   constructor(
     private http: Http,
@@ -41,5 +43,13 @@ export class UserService {
     let options = new RequestOptions({ headers: headers });
     return this.http.delete(`${this.BASE_URL}/users/${id}`, options)
       .map((res) => res.json());
+  }
+
+  search(city) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(`${this.BASE_URL}/users/city?name=${city}`, options)
+      .map((res) => res.json())
+      .catch((err) => this.error = err)
   }
 }

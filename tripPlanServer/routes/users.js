@@ -43,7 +43,6 @@ router.get('/:id', (req, res) => {
 
 /* EDIT a User. */
 router.put('/:id', (req, res) => {
-  console.log("hi");
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
@@ -58,16 +57,17 @@ console.log(req.params.id)
     age: req.body.age,
     interests: req.body.interests,
     description: req.body.description,
-    locations: req.body.locations,
+    city: req.body.city,
     languages: req.body.languages
 
-  }, (err) => {
+  }, {new: true}, (err, user) => {
     if (err) {
       return res.send(err);
     }
-
+    console.log(user)
     return res.json({
-      message: 'User updated successfully'
+      // message: 'User updated successfully',
+      user: user
     });
   });
 })

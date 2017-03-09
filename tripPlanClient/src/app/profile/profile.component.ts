@@ -7,13 +7,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  providers: [UserService, SessionService]
 })
 export class ProfileComponent implements OnInit {
 
   currentUser: Object;
-
-  users;
 
   constructor(
     private session: SessionService,
@@ -28,14 +25,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.get(params['id']);
+
     });
 
   }
 
   get(id) {
     this.user.get(id)
-      .subscribe((users) => {
-        this.user = users;
+      .subscribe((user) => {
+        this.currentUser = user;
       });
   }
 

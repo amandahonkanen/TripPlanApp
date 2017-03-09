@@ -22,7 +22,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
   	private session: SessionService,
-    private router: Router
+    private router: Router,
+    private users: UserService
   ) { }
 
   ngOnInit() {
@@ -34,7 +35,9 @@ export class SignupComponent implements OnInit {
           if (result === true) {
               // login successful
               console.log('result ok', result);
-              this.router.navigate(['/profile']);
+              let user_id = JSON.parse(localStorage.getItem("user"))._id
+              console.log(user_id)
+              this.router.navigate(['users', user_id]);
           } else {
           		console.log('result ko', result);
               // login failed

@@ -17,11 +17,8 @@ import { UserlistComponent } from './userlist/userlist.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'profile/:id', component: ProfileComponent,
-        children: [
-        { path: 'edit', component: EditComponent }
-      ]
-  },
+    { path: 'users/:id/edit', component: EditComponent },
+    { path: 'users/:id', component: ProfileComponent},
     { path: 'signup', component: SignupComponent },
     { path: 'city', component: UserlistComponent},
     { path: '**', redirectTo: '' }

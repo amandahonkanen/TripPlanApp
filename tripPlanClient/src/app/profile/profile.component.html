@@ -1,5 +1,10 @@
 
-<p>{{ currentUser.name}}</p>
+<p>Name {{ currentUser.name}}</p>
+<p> Age: {{ currentUser.age}}</p>
+<p> City: {{ currentUser.city}}</p>
+<p> Description: {{ currentUser.description}}</p>
+<p> Languages: {{ currentUser.languages}}</p>
+<p> Inetrests: {{ currentUser.interests}}</p>
 
 <router-outlet></router-outlet>
 <div *ngIf="currentUser.role === 'EXPERT'">

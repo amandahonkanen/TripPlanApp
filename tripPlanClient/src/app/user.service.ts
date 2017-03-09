@@ -27,14 +27,14 @@ export class UserService {
   get(id) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.BASE_URL}/profile/${id}`, options)
+    return this.http.get(`${this.BASE_URL}/users/${id}`, options)
       .map((res) => res.json());
   }
 
   edit(user) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(`${this.BASE_URL}/profile/${user.id}`, user, options )
+    return this.http.put(`${this.BASE_URL}/users/${user.id}`, user, options )
       .map((res) => res.json());
   }
 

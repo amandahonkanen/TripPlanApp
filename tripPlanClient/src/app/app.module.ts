@@ -16,7 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
-import { FileSelectDirective } from "ng2-file-upload";
+// import { FileSelectDirective } from "ng2-file-upload";
 import { UserlistComponent } from './userlist/userlist.component';
 import { SearchPipe } from './pipes/search.pipe';
 
@@ -31,7 +31,7 @@ import { SearchPipe } from './pipes/search.pipe';
     NavbarComponent,
     ProfileComponent,
     EditComponent,
-    FileSelectDirective,
+    // FileSelectDirective,
     UserlistComponent,
     SearchPipe
 ],

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService, SessionService]
+  providers: [UserService]
 })
 export class LoginComponent implements OnInit {
 
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private router: Router
+    private router: Router,
+    private users: UserService
   ) { }
 
   ngOnInit() {
@@ -30,8 +31,10 @@ export class LoginComponent implements OnInit {
     this.session.login(this.user)
 				        .subscribe(result => {
 				            if (result === true) {
+                      let user_id = JSON.parse(localStorage.getItem("user"))._id
+                      console.log(user_id)
 			                // login successful
-                      this.router.navigate(['profile']);
+                      this.router.navigate(['users', user_id]);
 			         			} else {
 			                // login failed
 			                this.error = 'Username or password is incorrect';

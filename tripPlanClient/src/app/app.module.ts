@@ -15,8 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditComponent } from './edit/edit.component';
+import { FileSelectDirective } from "ng2-file-upload";
 import { UserlistComponent } from './userlist/userlist.component';
 import { SearchPipe } from './pipes/search.pipe';
+
 
 
 @NgModule({
@@ -27,9 +30,12 @@ import { SearchPipe } from './pipes/search.pipe';
     HomeComponent,
     NavbarComponent,
     ProfileComponent,
+    EditComponent,
+    FileSelectDirective,
     UserlistComponent,
     SearchPipe
-  ],
+],
+
   imports: [
     BrowserModule,
     FormsModule,

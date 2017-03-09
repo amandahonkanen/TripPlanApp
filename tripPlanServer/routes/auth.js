@@ -50,6 +50,11 @@ router.post("/signup", (req, res, next) => {
   var name = req.body.name;
   var role = req.body.role;
   var city = req.body.city;
+  var age = 0;
+  var interests = [];
+  var description = '';
+  var languages = [];
+
 
 
   if (!username || !password) {
@@ -71,6 +76,10 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       name,
       role,
+      age,
+      interests,
+      description,
+      languages,
       city: [city]
     });
 

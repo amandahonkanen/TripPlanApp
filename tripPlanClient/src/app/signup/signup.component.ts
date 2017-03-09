@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
+import { UserService} from '../user.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  providers: [UserService, SessionService]
 })
 export class SignupComponent implements OnInit {
 
@@ -32,7 +34,7 @@ export class SignupComponent implements OnInit {
           if (result === true) {
               // login successful
               console.log('result ok', result);
-              this.router.navigate(['/profile, user._id']);
+              this.router.navigate(['/profile']);
           } else {
           		console.log('result ko', result);
               // login failed

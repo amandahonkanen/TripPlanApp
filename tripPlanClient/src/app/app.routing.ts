@@ -7,13 +7,21 @@ import { SessionService } from './session.service';
 import { UserService } from './user.service';
 import { SearchPipe } from './pipes/search.pipe';
 import { ProfileComponent } from './profile/profile.component';
+
+import { EditComponent } from './edit/edit.component';
+
 import { UserlistComponent } from './userlist/userlist.component';
+
 
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'users/:id', component: ProfileComponent},
+    { path: 'profile/:id', component: ProfileComponent,
+        children: [
+        { path: 'edit', component: EditComponent }
+      ]
+  },
     { path: 'signup', component: SignupComponent },
     { path: 'city', component: UserlistComponent},
     { path: '**', redirectTo: '' }

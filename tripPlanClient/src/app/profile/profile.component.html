@@ -1,3 +1,7 @@
-<p>
-  {{ currentUser.username}}
-</p>
+
+<p>{{ currentUser.name}}</p>
+
+<router-outlet></router-outlet>
+<div *ngIf="currentUser.role === 'EXPERT'">
+<a [routerLink]="['edit']"> Add your details! </a>
+</div>

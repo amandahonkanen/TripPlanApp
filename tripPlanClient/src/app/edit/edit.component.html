@@ -1,0 +1,28 @@
+<h4>Add details on your expertise:</h4>
+
+<form>
+  <div class="form-group">
+    <label for="InputAge">Age</label>
+    <input type="text" class="form-control" id="InputAge" placeholder="Age" [(ngModel)]="editUser.age" name="age">
+  </div>
+  <div class="form-group">
+    <label for="InputInterests">Interests</label>
+    <input type="text" class="form-control" id="InputInterests" placeholder="Interests" [(ngModel)]="editUser.interests" name="interests">
+  </div>
+  <div class="form-group">
+    <label for="InputDescription">Description</label>
+    <input type="text" class="form-control" id="InputDescription" placeholder="Description" [(ngModel)]="editUser.description" name="description">
+  </div>
+  <div class="form-group">
+    <label for="InputCity">Cities you are an expert on</label>
+    <input type="text" class="form-control" id="InputCity" placeholder="City" [(ngModel)]="editUser.city" name="city" style="text-transform: lowercase">
+  </div>
+  <div class="form-group">
+    <label for="InputLanguages">Languages</label>
+    <input type="text" class="form-control" id="InputLanguages" placeholder="Language" [(ngModel)]="editUser.languages" name="languages">
+  </div>
+
+  <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
+
+  <button type="submit" class="btn btn-default btn-primary" (click)="save()">Update your profile</button>
+</form>

@@ -16,6 +16,7 @@ router.get('/', (req, res, next) => {
 });
 
 
+
 /* GET a single User. */
 router.get('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -33,9 +34,12 @@ router.get('/:id', (req, res) => {
 
 /* EDIT a User. */
 router.put('/:id', (req, res) => {
+  console.log("hi");
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
+
+console.log(req.params.id)
 
   User.findByIdAndUpdate(req.params.id, {
     username: req.body.username,
@@ -46,7 +50,7 @@ router.put('/:id', (req, res) => {
     interests: req.body.interests,
     description: req.body.description,
     locations: req.body.locations,
-    languages: req.body.languages,
+    languages: req.body.languages
 
   }, (err) => {
     if (err) {
@@ -75,7 +79,7 @@ router.delete('/:id', (req, res) => {
     });
   });
 });
-
+//
 // router.post('/', upload.single('file'), function(req, res) {
 //   const user = new User({
 //     username: req.body.username,
@@ -87,7 +91,7 @@ router.delete('/:id', (req, res) => {
 //     description: req.body.description,
 //     locations: req.body.locations,
 //     languages: req.body.languages,
-//     image: `/uploads/${req.file.filename}`,
+//     image: `/images/${req.file.filename}`,
 //
 //   });
 //

@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditComponent } from './edit/edit.component';
+import { FileSelectDirective } from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     NavbarComponent,
     SearchComponent,
-    ProfileComponent
-  ],
+    ProfileComponent,
+    EditComponent,
+    FileSelectDirective
+],
   imports: [
     BrowserModule,
     FormsModule,

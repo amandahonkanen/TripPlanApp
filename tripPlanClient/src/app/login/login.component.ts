@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit {
     this.session.login(this.user)
 				        .subscribe(result => {
 				            if (result === true) {
+                      let user_id = JSON.parse(localStorage.getItem("user"))._id
+                      console.log(user_id)
 			                // login successful
-                      this.router.navigate(['profile']);
+                      this.router.navigate(['profile', user_id]);
 			         			} else {
 			                // login failed
 			                this.error = 'Username or password is incorrect';

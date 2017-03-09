@@ -1,14 +1,10 @@
 <p>
   {{ currentUser.username}}
+
 </p>
+<p>{{ currentUser.name}}</p>
 
-
-<!-- <div *ngFor="let user of users">
-  <div *ngIf="user.role == 'EXPERT'">
-    <h3> {{ user.name }} </h3>
-    <p> {{ user.username }} </p>
-
-    <p> {{ user.role }} </p>
-
-    <hr>
-  </div> -->
+<router-outlet></router-outlet>
+<div *ngIf="currentUser.role === 'EXPERT'">
+<a [routerLink]="['edit']"> Add your details! </a>
+</div>

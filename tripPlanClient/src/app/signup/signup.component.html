@@ -16,7 +16,7 @@
 	      </div>
 				<div class="form-group">
 				<label for="RoleInput">Please select your role</label>
-				<select class="form-control" name="role" id="role">
+				<select class="form-control" name="role" id="role" [(ngModel)]="newUser.role">
 					<option value="EXPERT">You are an expert of a city </option>
 					<option value="TRAVELER">You want to travel </option>
 				</select>

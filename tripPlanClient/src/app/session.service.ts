@@ -99,11 +99,15 @@ export class SessionService implements CanActivate {
         });
   }
 
+
+
+
   logout() {
       // clear token remove user from local storage to log user out
       this.token = null;
       this.isAuth.emit(false);
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
       this.router.navigate(['/login']);
   }
 

@@ -49,6 +49,7 @@ router.post("/signup", (req, res, next) => {
   var password = req.body.password;
   var name = req.body.name;
   var role = req.body.role;
+  var city = req.body.city;
 
 
   if (!username || !password) {
@@ -70,6 +71,7 @@ router.post("/signup", (req, res, next) => {
       password: hashPass,
       name,
       role,
+      city: [city]
     });
 
     newUser.save((err, user) => {

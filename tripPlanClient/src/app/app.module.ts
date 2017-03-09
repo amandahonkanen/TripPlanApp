@@ -14,8 +14,10 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { SearchPipe } from './pipes/search.pipe';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserlistComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

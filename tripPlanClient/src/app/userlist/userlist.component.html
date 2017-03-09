@@ -1,0 +1,23 @@
+<!-- col-sm-offset-3 -->
+<div>
+  <label for="InputName"> Search Name: </label>
+  <input id="InputName" placeholder="Name" type="text" [(ngModel)]="pattern">
+<div>
+
+  <ul>
+    <li *ngFor="let user of usersList">
+    {{user.name}}
+    </li>
+  </ul>
+  <div class="row" >
+          <div class="col-sm-3" *ngFor="let user of users | filter: 'name': pattern; let i = index" >
+            <div *ngIf="user.role == 'EXPERT'">
+                <p> {{ user.username }} </p>
+                <p> {{ user.role }} </p>
+                <a [routerLink]="['/users', user._id]"> View Details </a>
+
+                <hr>
+            </div>
+          </div>
+
+  </div>

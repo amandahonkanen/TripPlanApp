@@ -13,7 +13,7 @@ const userSchema = new Schema({
   age: Number,
   interests: String,
   description: String,
-  locations: Array,
+  city: Array,
   languages: Array,
   bookings: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],

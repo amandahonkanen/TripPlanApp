@@ -3,7 +3,16 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../model/user');
 
-
+router.get('/city', (req, res)=> {
+  let city = req.query.name
+  User.find({city: {"$in" : [city]}})
+    .exec((err, users) => {
+      if (err) {
+        return res.send(err);
+      }
+      return res.json(users);
+    });
+  });
 
 router.get('/', (req, res, next) => {
   User.find({})
@@ -75,6 +84,12 @@ router.delete('/:id', (req, res) => {
     });
   });
 });
+
+
+
+
+
+
 
 // router.post('/', upload.single('file'), function(req, res) {
 //   const user = new User({

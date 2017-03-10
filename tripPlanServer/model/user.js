@@ -17,6 +17,7 @@ const userSchema = new Schema({
   languages: Array,
   bookings: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+  image: String,
 }, {
   timestamps: {
     createdAt: "created_at",

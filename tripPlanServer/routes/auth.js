@@ -54,6 +54,7 @@ router.post("/signup", (req, res, next) => {
   var interests = [];
   var description = '';
   var languages = [];
+  var image = '';
 
 
 
@@ -80,7 +81,8 @@ router.post("/signup", (req, res, next) => {
       interests,
       description,
       languages,
-      city: [city]
+      city: [city],
+      image,
     });
 
     newUser.save((err, user) => {

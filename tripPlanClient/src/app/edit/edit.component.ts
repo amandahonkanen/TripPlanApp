@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { UserService } from './../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
 
 
 @Component({
@@ -11,52 +12,79 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
+  uploader: FileUploader;
+
   originalUser: any;
-  editUser: Object = {};
+  editUser: any = {};
 
-  constructor(private route: ActivatedRoute,
-    private userService: UserService, private router: Router) {
+  feedback: string;
 
-        this.editUser = localStorage.getItem("user");
-
-    }
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router,
+  ) {
+    this.editUser = localStorage.getItem("user");
+  }
 
   ngOnInit() {
+
     let paramId;
-    this.route.params.subscribe(params => {
+
+
+
+    this.route.params.subscribe(params =>{
       paramId = params['id'];
+
+      this.uploader = new FileUploader({
+        url:`http://localhost:3000/api/users/${paramId}`,
+        method: 'PUT',
+        // authToken: `JWT ${this.session.token}`
+      });
+
+      this.uploader.onSuccessItem = (item, response) => {
+        console.log('Success', response)
+        this.router.navigate(['users', paramId]);
+      };
+
+      this.uploader.onErrorItem = (item, response, status, headers) => {
+        console.log('Error', response)
+      };
     });
-    // let paramId = this.route.snapshot.parent.params['id'];
-    // console.log("param id", paramId)
+
     this.userService.get(paramId)
       .subscribe((user)=>{
-        this.originalUser = user;
-        // console.log("user", user);
         this.editUser = {
-          id: this.originalUser._id,
-          username: this.originalUser.username,
-          name: this.originalUser.name,
-          role: this.originalUser.role,
-          password: this.originalUser.password,
-          interests: this.originalUser.interests,
-          city: this.originalUser.city,
-          description: this.originalUser.description,
-          langauges: this.originalUser.languages
+          id: user._id,
+          username: user.username,
+          name: user.name,
+          role: user.role,
+          password: user.password,
+          age: user.age,
+          interests: user.interests,
+          description: user.description,
+          languages: user.languages,
+          city: user.city,
+          image: user.image
         };
       });
     }
 
-  save(args) {
-    // console.log(this.editUser);
-    // console.log("EdiUser ", this.editUser);
-      let user_id = this.originalUser._id;
-      this.userService.edit(this.editUser).subscribe((res) =>{
-        console.log("res", res);
-        console.log("user_id", user_id);
-        this.router.navigate(['users', user_id]);
-      });
+  update() {
+    this.uploader.onBuildItemForm = (item, form) => {
+      form.append('username', this.editUser.username);
+      form.append('name', this.editUser.name);
+      form.append('role', this.editUser.role);
+      form.append('password', this.editUser.password);
+      form.append('age', this.editUser.age);
+      form.append('interests', this.editUser.interests);
+      form.append('description', this.editUser.description);
+      form.append('languages', this.editUser.languages);
+      form.append('city', this.editUser.city);
+    };
 
+    this.uploader.uploadAll();
 
-    }
+  }
 
 }

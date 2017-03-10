@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../model/user');
+const upload = require('../config/multer');
+
 
 router.get('/city', (req, res)=> {
   let city = req.query.name
@@ -42,14 +44,16 @@ router.get('/:id', (req, res) => {
 });
 
 /* EDIT a User. */
-router.put('/:id', (req, res) => {
+router.put('/:id', upload.single('file'), (req, res) => {
+
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
 
-console.log(req.params.id)
+  // console.log("params ", req.params.id)
+  // console.log(req.file)
 
-  User.findByIdAndUpdate(req.params.id, {
+  const userToUpdate = {
     username: req.body.username,
     name: req.body.name,
     password: req.body.password,
@@ -58,17 +62,19 @@ console.log(req.params.id)
     interests: req.body.interests,
     description: req.body.description,
     city: req.body.city,
-    languages: req.body.languages
+    languages: req.body.languages,
+    image: `/uploads/${req.file.filename}`
+  };
 
-  }, {new: true}, (err, user) => {
+  User.findByIdAndUpdate(req.params.id, userToUpdate, {new: true}, (err, user) => {
     if (err) {
-      return res.send(err);
+      return res.status(500).json( {err} );
+    } else {
+      return res.status(200).json({
+        // message: 'User updated successfully',
+        user: user
+      });
     }
-    console.log(user)
-    return res.json({
-      // message: 'User updated successfully',
-      user: user
-    });
   });
 })
 

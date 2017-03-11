@@ -1,3 +1,11 @@
 .col-sm-3{
   text-align: center;
 }
+
+.image-circle {
+  border-radius: 50%;
+}
+
+.user {
+  margin-top: 20px;
+}

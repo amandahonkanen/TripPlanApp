@@ -6,11 +6,10 @@
 
   <div class="row" >
           <div class="col-sm-3" *ngFor="let user of users | filter: 'name': pattern; let i = index" >
-            <div *ngIf="user.role == 'EXPERT'">
+            <div class="user"  *ngIf="user.role == 'EXPERT'">
+              <img class="image-circle" style="width: 150px"src="{{user.image}}" />
                 <p> {{ user.username }} </p>
-                <p> {{ user.role }} </p>
-                <p> {{ user.city }} </p>
-                <p> {{ user._id }} </p>
+                <p> {{ user.age }} </p>
                 <a [routerLink]="['/city', user._id]"> View Details </a>
 
                 <hr>

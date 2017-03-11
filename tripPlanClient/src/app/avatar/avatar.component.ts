@@ -26,7 +26,8 @@ feedback: string;
   ngOnInit() {
     this.route.params.subscribe(params =>{
       this.paramId = params['id'];
-});
+    });
+
       this.uploader = new FileUploader({
         url:`http://localhost:3000/api/users/${this.paramId}`
         // authToken: `JWT ${this.session.token}`
@@ -41,8 +42,7 @@ feedback: string;
         console.log('Error', response)
       };
 
-  }
-
+}
   addAvatar(){
 
     this.uploader.onBuildItemForm = (item, form) => {

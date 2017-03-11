@@ -62,5 +62,6 @@ export class EditComponent implements OnInit {
           localStorage.setItem("user", JSON.stringify(user))
           this.router.navigate(['users', user_id]);
         });
-      }
+    }
+
 }

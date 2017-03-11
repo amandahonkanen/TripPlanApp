@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { SessionService } from '../session.service';
 import { UserService } from './../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser: Object;
+  currentUser;
 
   constructor(
     private session: SessionService,
@@ -19,15 +19,19 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute,
     )
     {
-    this.currentUser = this.session.currentUser || {}
+    this.currentUser =  this.session.currentUser || {}
    }
 
   ngOnInit() {
+    console.log("ngOninit profile")
     this.route.params.subscribe(params => {
       this.get(params['id']);
 
     });
+  }
 
+  ngOnChanges() {
+    console.log("ngOnChanges");
   }
 
   get(id) {

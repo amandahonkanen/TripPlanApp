@@ -12,17 +12,22 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
 
 import { UserlistComponent } from './userlist/userlist.component';
+
 import { ExpertDetailsComponent } from './expert-details/expert-details.component';
 import { RequestComponent } from './request/request.component';
 import { RequestFormComponent } from './request-form/request-form.component';
+
+import { AvatarComponent} from './avatar/avatar.component';
+
 
 
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'users/:id/edit', component: EditComponent, canActivate: [SessionService] },
-    { path: 'users/:id', component: ProfileComponent, canActivate: [SessionService]},
+    { path: 'users/:id/edit', component: EditComponent },
+    { path: 'users/:id/avatar', component: AvatarComponent },
+    { path: 'users/:id', component: ProfileComponent},
     { path: 'city/:id', component: ExpertDetailsComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'city', component: UserlistComponent},

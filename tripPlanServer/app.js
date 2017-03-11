@@ -9,10 +9,13 @@ var auth         = require('./routes/auth');
 var users        = require('./routes/users');
 var cors         = require('cors');
 var requests     = require('./routes/requests');
+var multer = require('multer');
 
 
 
 
+
+require('./config/multer');
 require('./config/database');
 var app = express();
 

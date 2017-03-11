@@ -1,16 +1,15 @@
-
-
-<router-outlet></router-outlet>
 <div *ngIf="currentUser.role === 'EXPERT'">
-  <p>Name {{ currentUser.name}}</p>
-  <p> Age: {{ currentUser.age}}</p>
-  <p> City: {{ currentUser.city}}</p>
-  <p> Description: {{ currentUser.description}}</p>
-  <p> Languages: {{ currentUser.languages}}</p>
-  <p> Inetrests: {{ currentUser.interests}}</p>
-
+<img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
+<h4>Name:</h4><p>{{ currentUser.name}}</p>
+<h4>Age:</h4><p>{{ currentUser.age}}</p>
+<h4>Interests:</h4><p>{{ currentUser.interests}}</p>
+<h4>Description:</h4><p>{{ currentUser.description}}</p>
+<h4>City:</h4><p>{{ currentUser.city}}</p>
+<h4>Languages:</h4><p>{{ currentUser.languages}}</p>
 <a [routerLink]="['edit']"> Add your details! </a>
 </div>
+
+
 
 <div *ngIf="currentUser.role === 'TRAVELER'">
   <h3>Welcome <p> {{ currentUser.name}} </p></h3>
@@ -18,3 +17,5 @@
 
 
 </div>
+
+<a [routerLink]="['avatar']"> Add your avatar! </a>

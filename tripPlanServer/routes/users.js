@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../model/user');
+const upload = require('../config/multer');
+
 
 router.get('/city', (req, res)=> {
   let city = req.query.name;
@@ -43,13 +45,12 @@ router.get('/:id', (req, res) => {
 
 /* EDIT a User. */
 router.put('/:id', (req, res) => {
+
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
 
-console.log(req.params.id)
-
-  User.findByIdAndUpdate(req.params.id, {
+  const userToUpdate = {
     username: req.body.username,
     name: req.body.name,
     password: req.body.password,
@@ -59,16 +60,17 @@ console.log(req.params.id)
     description: req.body.description,
     city: req.body.city,
     languages: req.body.languages
+  };
 
-  }, {new: true}, (err, user) => {
+  User.findByIdAndUpdate(req.params.id, userToUpdate, {new: true}, (err, user) => {
     if (err) {
-      return res.send(err);
+      return res.status(500).json( {err} );
+    } else {
+      return res.status(200).json({
+        // message: 'User updated successfully',
+        user: user
+      });
     }
-    console.log(user);
-    return res.json({
-      // message: 'User updated successfully',
-      user: user
-    });
   });
 });
 
@@ -86,6 +88,32 @@ router.delete('/:id', (req, res) => {
     return res.json({
       message: 'User has been removed!'
     });
+  });
+});
+
+
+router.post('/:id', upload.single('file'), (req, res, next) => {
+  var userId = req.params.id;
+  console.log("userId: ", userId);
+
+  let userToUpdate = {
+    image:  `http://localhost:3000/uploads/${req.file.filename}`
+  };
+
+  console.log(userToUpdate)
+  //
+  // var userId = req.body._id.toString();
+  // userId = mongoose.Types.ObjectId(userId)
+
+  User.findByIdAndUpdate(userId, userToUpdate, (err, user)=>{
+    if (err) {
+      console.log("GOT AN ERROR");
+      next(err)
+    } else {
+
+      console.log("GOT UPDATED");
+      res.json(user);
+    }
   });
 });
 

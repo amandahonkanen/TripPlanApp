@@ -92,31 +92,31 @@ router.delete('/:id', (req, res) => {
 });
 
 
-router.post('/:id', upload.single('file'), (req, res, next) => {
-  var userId = req.params.id;
-  console.log("userId: ", userId);
-
-  let userToUpdate = {
-    image:  `http://localhost:3000/uploads/${req.file.filename}`
-  };
-
-  console.log(userToUpdate)
-  //
-  // var userId = req.body._id.toString();
-  // userId = mongoose.Types.ObjectId(userId)
-
-  User.findByIdAndUpdate(userId, userToUpdate, (err, user)=>{
-    if (err) {
-      console.log("GOT AN ERROR");
-      next(err)
-    } else {
-
-      console.log("GOT UPDATED");
-      res.json(user);
-    }
-  });
-});
-
+// router.post('/:id', upload.single('file'), (req, res, next) => {
+//   var userId = req.params.id;
+//   console.log("userId: ", userId);
+//
+//   let userToUpdate = {
+//     image:  `http://localhost:3000/uploads/${req.file.filename}`
+//   };
+//
+//   console.log(userToUpdate)
+//   //
+//   // var userId = req.body._id.toString();
+//   // userId = mongoose.Types.ObjectId(userId)
+//
+//   User.findByIdAndUpdate(userId, userToUpdate, (err, user)=>{
+//     if (err) {
+//       console.log("GOT AN ERROR");
+//       next(err)
+//     } else {
+//
+//       console.log("GOT UPDATED");
+//       res.json(user);
+//     }
+//   });
+// });
+//
 
 
 

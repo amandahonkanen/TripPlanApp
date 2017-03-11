@@ -4,8 +4,11 @@ const Schema   = mongoose.Schema;
 const requestSchema = new Schema({
   startDate     : Date,
   endDate       : Date,
-  user          : {type: Schema.Types.ObjectId, ref: 'User'},
+  traveler      : {type: Schema.Types.ObjectId, ref: 'User'},
   expert        : {type: Schema.Types.ObjectId, ref: 'User'},
+  whoIsTravelling: String,
+  mainInterests : String,
+  mustKnows     : String,
   completed     : {type: Boolean, default: false},
   accepted      : {type: Boolean, default: false}
 });

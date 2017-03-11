@@ -8,6 +8,7 @@ const passport   = require('./config/passport');
 var auth         = require('./routes/auth');
 var users        = require('./routes/users');
 var cors         = require('cors');
+var requests     = require('./routes/requests');
 
 
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', auth);
 app.use('/api/users', users);
+app.use('/api/request', requests);
 
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 

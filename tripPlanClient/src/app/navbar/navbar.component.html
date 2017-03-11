@@ -17,6 +17,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <li *ngIf="!isAuth"><a [routerLink]="['login']">Login</a></li>
+        <!-- <li *ngIf="isAuth">Signed in as {{user.name}}</li> -->
         <li *ngIf="isAuth"><a (click)="logout()">Logout</a></li>
         <li *ngIf="!isAuth"><a [routerLink]="['signup']">Signup</a></li>
       </ul>

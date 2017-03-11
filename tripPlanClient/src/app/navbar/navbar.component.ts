@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +13,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
   	private session: SessionService,
-  	private router:  Router
+  	private router:  Router,
+    private route: ActivatedRoute
   ) {
     this.session.isAuth
         .subscribe((isAuth: boolean) => {
@@ -31,7 +31,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.isAuth = false;
     }
-  }
+
+
+  };
+
 
   logout() {
   	this.session.logout();

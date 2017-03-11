@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from './../user.service';
 import { SearchPipe } from '../pipes/search.pipe';
 
@@ -15,7 +15,8 @@ export class UserlistComponent implements OnInit {
 
   constructor(
     private user: UserService,
-    private route: ActivatedRoute,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {

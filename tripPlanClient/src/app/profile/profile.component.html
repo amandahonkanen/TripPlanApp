@@ -1,12 +1,20 @@
 
-<p>Name {{ currentUser.name}}</p>
-<p> Age: {{ currentUser.age}}</p>
-<p> City: {{ currentUser.city}}</p>
-<p> Description: {{ currentUser.description}}</p>
-<p> Languages: {{ currentUser.languages}}</p>
-<p> Inetrests: {{ currentUser.interests}}</p>
 
 <router-outlet></router-outlet>
 <div *ngIf="currentUser.role === 'EXPERT'">
+  <p>Name {{ currentUser.name}}</p>
+  <p> Age: {{ currentUser.age}}</p>
+  <p> City: {{ currentUser.city}}</p>
+  <p> Description: {{ currentUser.description}}</p>
+  <p> Languages: {{ currentUser.languages}}</p>
+  <p> Inetrests: {{ currentUser.interests}}</p>
+
 <a [routerLink]="['edit']"> Add your details! </a>
+</div>
+
+<div *ngIf="currentUser.role === 'TRAVELER'">
+  <h3>Welcome <p> {{ currentUser.name}} </p></h3>
+  <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
+
+
 </div>

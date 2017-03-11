@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('../model/user');
 
 router.get('/city', (req, res)=> {
-  let city = req.query.name
+  let city = req.query.name;
   User.find({city: {"$in" : [city]}})
     .exec((err, users) => {
       if (err) {
@@ -64,13 +64,13 @@ console.log(req.params.id)
     if (err) {
       return res.send(err);
     }
-    console.log(user)
+    console.log(user);
     return res.json({
       // message: 'User updated successfully',
       user: user
     });
   });
-})
+});
 
 /* DELETE a User */
 router.delete('/:id', (req, res) => {
@@ -89,36 +89,6 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-//
-
-
-
-// router.post('/', upload.single('file'), function(req, res) {
-//   const user = new User({
-//     username: req.body.username,
-//     name: req.body.name,
-//     password: req.body.password,
-//     role: req.body.role,
-//     age: req.body.age,
-//     interests: req.body.interests,
-//     description: req.body.description,
-//     locations: req.body.locations,
-//     languages: req.body.languages,
-//     image: `/images/${req.file.filename}`,
-//
-//   });
-//
-//   user.save((err) => {
-//     if (err) {
-//       return res.send(err);
-//     }
-//
-//     return res.json({
-//       message: 'New User created!',
-//       user: user
-//     });
-//   });
-// });
 
 
 

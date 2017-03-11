@@ -11,10 +11,22 @@
                 <p> {{ user.role }} </p>
                 <p> {{ user.city }} </p>
                 <p> {{ user._id }} </p>
-                <a [routerLink]="['/users', user._id]"> View Details </a>
+                <a [routerLink]="['/city', user._id]"> View Details </a>
 
                 <hr>
             </div>
           </div>
 
   </div>
+
+
+
+  <!-- <div *ngFor="let user of users | filter:filters">
+            <div *ngIf="user.role == 'HELPER'">
+              <h3> {{ user.name }} </h3>
+              <p> {{ user.email }} </p>
+              <h4> {{ user.slogan }} </h4>
+              <p> {{ user.description }} </p>
+              <p> {{ user.speciality }} </p>
+              <p> {{ user.role }} </p>
+              <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p> -->

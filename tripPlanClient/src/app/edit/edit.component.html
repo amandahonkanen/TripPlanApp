@@ -21,11 +21,7 @@
     <label for="InputLanguages">Languages</label>
     <input type="text" class="form-control" id="InputLanguages" placeholder="Language" [(ngModel)]="editUser.languages" name="languages">
   </div>
-  <div class="form-group">
-   <label for="image">Image</label>
-   <input type="file" class="form-control" name="image" ng2FileSelect [uploader]="uploader" />
-</div>
 
 
-  <button type="submit" class="btn btn-default btn-primary" (click)="update()">Update your profile</button>
+  <button type="submit" class="btn btn-default btn-primary" (click)="save()">Update your profile</button>
 </form>

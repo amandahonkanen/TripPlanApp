@@ -19,6 +19,7 @@ import { EditComponent } from './edit/edit.component';
 import { FileSelectDirective } from "ng2-file-upload";
 import { UserlistComponent } from './userlist/userlist.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { AvatarComponent } from './avatar/avatar.component';
 
 
 
@@ -33,7 +34,8 @@ import { SearchPipe } from './pipes/search.pipe';
     EditComponent,
     FileSelectDirective,
     UserlistComponent,
-    SearchPipe
+    SearchPipe,
+    AvatarComponent
 ],
 
   imports: [

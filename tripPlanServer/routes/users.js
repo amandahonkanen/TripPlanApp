@@ -44,14 +44,11 @@ router.get('/:id', (req, res) => {
 });
 
 /* EDIT a User. */
-router.put('/:id', upload.single('file'), (req, res) => {
+router.put('/:id', (req, res) => {
 
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
-
-  // console.log("params ", req.params.id)
-  // console.log(req.file)
 
   const userToUpdate = {
     username: req.body.username,
@@ -62,8 +59,7 @@ router.put('/:id', upload.single('file'), (req, res) => {
     interests: req.body.interests,
     description: req.body.description,
     city: req.body.city,
-    languages: req.body.languages,
-    image: `/uploads/${req.file.filename}`
+    languages: req.body.languages
   };
 
   User.findByIdAndUpdate(req.params.id, userToUpdate, {new: true}, (err, user) => {
@@ -97,34 +93,31 @@ router.delete('/:id', (req, res) => {
 
 //
 
+router.post('/:id', upload.single('file'), (req, res, next) => {
+  var userId = req.params.id;
+  console.log("userId: ", userId);
 
+  let userToUpdate = {
+    image:  `http://localhost:3000/uploads/${req.file.filename}`
+  }
 
-// router.post('/', upload.single('file'), function(req, res) {
-//   const user = new User({
-//     username: req.body.username,
-//     name: req.body.name,
-//     password: req.body.password,
-//     role: req.body.role,
-//     age: req.body.age,
-//     interests: req.body.interests,
-//     description: req.body.description,
-//     locations: req.body.locations,
-//     languages: req.body.languages,
-//     image: `/images/${req.file.filename}`,
-//
-//   });
-//
-//   user.save((err) => {
-//     if (err) {
-//       return res.send(err);
-//     }
-//
-//     return res.json({
-//       message: 'New User created!',
-//       user: user
-//     });
-//   });
-// });
+  console.log(userToUpdate)
+  //
+  // var userId = req.body._id.toString();
+  // userId = mongoose.Types.ObjectId(userId)
+
+  User.findByIdAndUpdate(userId, userToUpdate, (err, user)=>{
+    if (err) {
+      console.log("GOT AN ERROR");
+      next(err)
+    } else {
+
+      console.log("GOT UPDATED");
+      res.json(user);
+    }
+  })
+});
+
 
 
 

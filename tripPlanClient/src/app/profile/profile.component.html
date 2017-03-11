@@ -7,9 +7,7 @@
 <h4>City:</h4><p>{{ currentUser.city}}</p>
 <h4>Languages:</h4><p>{{ currentUser.languages}}</p>
 
-
 </div>
-
 
 <div *ngIf="currentUser.role === 'EXPERT'">
 <a [routerLink]="['edit']"> Add your details! </a>

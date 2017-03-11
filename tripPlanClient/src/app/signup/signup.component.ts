@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
             console.log(user_id)
             // login successful
               // login successful
-              console.log('result ok', result);
+              console.log('result ok', result);              
               this.router.navigate(['users', user_id]);
           } else {
           		console.log('result ko', result);

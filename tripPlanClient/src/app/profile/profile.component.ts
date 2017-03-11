@@ -12,8 +12,6 @@ export class ProfileComponent implements OnInit {
 
   currentUser;
 
-
-
   constructor(
     private session: SessionService,
     private user: UserService,
@@ -28,6 +26,7 @@ export class ProfileComponent implements OnInit {
     console.log("ngOninit profile")
     this.route.params.subscribe(params => {
       this.get(params['id']);
+
     });
   }
 
@@ -38,7 +37,6 @@ export class ProfileComponent implements OnInit {
   get(id) {
     this.user.get(id)
       .subscribe((user) => {
-        console.log("user: ", user);
         this.currentUser = user;
       });
   }

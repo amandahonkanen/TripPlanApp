@@ -34,7 +34,7 @@
       <div *ngIf="currentUser.bookings.length">
 
               <ul>
-                <li *ngFor="let booking of currentUser.bookings"><a [routerLink]="['/request', booking._id]">{{booking.name}}</a><p>{{booking.city}}</p>
+                <li *ngFor="let booking of currentUser.bookings"><a [routerLink]="['/request', booking._id]">{{booking.name}}</a>
                   {{ booking.city&nbsp;}}
                   <div class="request-button">
                     <button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Plan Trip here</button>
@@ -114,8 +114,15 @@
 
 
               </ul>
-              <br>
 
+              </div>
+              </div>
+            </tab>
+
+            <tab heading="Reviews">Reviews</tab>
+
+
+              <br>
 
 <div class="profile-page" *ngIf="currentUser.role === 'TRAVELER'">
   <div class="user">

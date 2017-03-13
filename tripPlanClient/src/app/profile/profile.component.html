@@ -1,54 +1,173 @@
-<<<<<<< HEAD
-<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
-  <div class="user">
-    <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
-
-  </div>
-
-    <div class="details">
-        <p id="username">{{ currentUser.name}}</p>
-        <p>Age: {{ currentUser.age}}</p>
-        <p>Interests: {{ currentUser.interests}}</p>
-        <p>Description: {{ currentUser.description}}</p>
-        <p>City: {{ currentUser.city}}</p>
-        <p>Languages: {{ currentUser.languages}}</p>
-        <h4>Bookings:</h4>
-        <div *ngIf="currentUser.bookings.length">
-                <ul>
-                  <li *ngFor="let booking of currentUser.bookings"> {{ booking&nbsp;}} </li>
-                </ul>
-              </div>
-        </div>
-
-
-    </div>
-
-    <div class="links">
-    <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
-    <p><a [routerLink]="['edit']"> Add your details </a></p>
-    <p><a [routerLink]="['contact']"> Make itinerary</a></p>
-
-    </div>
-
 <ol class="breadcrumb">
 <li><a [routerLink]="['/']">Home</a></li>
 <li class="active">Dashboard</li>
 <!-- <li><a [routerLink]="['/']">Listings</a></li> -->
-
 </ol>
 
-
-
-<div *ngIf="currentUser.role === 'TRAVELER'">
-  <h3>Welcome <p> {{ currentUser.name}} </p></h3>
-  <h4>Bookings:</h4>
-  <div *ngIf="currentUser.bookings.length">
-          <ul>
-            <li *ngFor="let booking of currentUser.bookings"> {{ booking.city }} </li>
-          </ul>
-        </div>
-
+<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
+  <div class="user">
+    <img class="image-circle" style="width: 150px" src="{{currentUser.image}}" />
+    <p id="username">{{ currentUser.name}}</p>
   </div>
-  <a [routerLink]="['avatar']"> Add your avatar! </a>
-  <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
+
+
+<div class="col-lg-12" class = "tab-body">
+  <tabset class="tabset" [justified]="true">
+    <tab heading="About">
+      <div class="details">
+          <p>Age: {{ currentUser.age}}</p>
+          <p>Interests: {{ currentUser.interests}}</p>
+          <p>Description: {{ currentUser.description}}</p>
+          <p>City: {{ currentUser.city}}</p>
+          <p>Languages: {{ currentUser.languages}}</p>
+
+          <div class="links">
+              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+              <p><a [routerLink]="['edit']"> Add your details </a></p>
+          </div>
+
+      </div>
+    </tab>
+    <tab heading="Bookings">
+      <div class="col-xs-8 col-xs-offset-2">
+      <div *ngIf="currentUser.bookings.length">
+
+              <ul>
+                <li *ngFor="let booking of currentUser.bookings">
+                  {{ booking.city&nbsp;}}
+                  <div class="request-button">
+                    <button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Plan Trip here</button>
+                   <!-- <button id="expertList" class="btn btn-success" (click)="goToRequest()"><a style="text-decoration:none; color:white;"> Contact {{ user.name }}</a></button> -->
+                  </div>
+                  <div class="request-form" (collapsed)="collapsed($event)"
+                    [collapse]="isCollapsed"
+                     (expanded)="expanded($event)">
+
+                     <div class = "col-xs-12" >
+                       <div class="form-group">
+                       <label for="numberDays">Number of days </label>
+                       <select>
+                         <option value=1>1</option>
+                         <option value=2>2</option>
+                         <option value=3>3</option>
+                         <option value=4>4</option>
+                         <option value=5>5</option>
+                         <option value=6>6</option>
+                         <option value=7>7</option>
+                         <option value=8>8</option>
+                         <option value=9>9</option>
+                       </select>
+                       </div>
+                     <form>
+                       <div class="form-group">
+                         <label for="InputBreakfast">Breakfast Options</label>
+                         <input type="text" class="form-control"  placeholder="Breakfast 1" [(ngModel)]="newAgenda.breakfast1" name="breakfast">
+                         <input type="text" class="form-control" placeholder="Breakfast 2" [(ngModel)]="newAgenda.breakfast2" name="breakfast">
+                         <input type="text" class="form-control" placeholder="Breakfast 3" [(ngModel)]="newAgenda.breakfast3" name="breakfast">
+                       </div>
+                       <div class="form-group">
+                         <label for="InputLunch">Lunch Options</label>
+                         <input type="text" class="form-control" placeholder="Lunch 1" [(ngModel)]="newAgenda.lunch1" name="lunch1">
+                         <input type="text" class="form-control" placeholder="Lunch 2" [(ngModel)]="newAgenda.lunch2" name="lunch2">
+                         <input type="text" class="form-control" placeholder="Lunch 3" [(ngModel)]="newAgenda.lunch3" name="lunch3">
+                       </div>
+                       <div class="form-group">
+                         <label for="InputDinner">Dinner Options</label>
+                         <input type="text" class="form-control" placeholder="Dinner 1" [(ngModel)]="newAgenda.dinner1" name="dinner1">
+                         <input type="text" class="form-control" placeholder="Dinner 2" [(ngModel)]="newAgenda.dinner2" name="dinner2">
+                         <input type="text" class="form-control" placeholder="Dinner 3" [(ngModel)]="newAgenda.dinner3" name="dinner3">
+                       </div>
+
+
+
+                       <div class="form-group">
+                         <label for="InputMorningActivity">Morning Activity Options</label>
+                         <input type="text" class="form-control" placeholder="Morning Activity 1" [(ngModel)]="newAgenda.morningActivity1" name="MorningActivity1">
+                         <input type="text" class="form-control" placeholder="Morning Activity 2" [(ngModel)]="newAgenda.morningActivity2" name="MorningActivity2">
+                         <input type="text" class="form-control" placeholder="Morning Activity 3" [(ngModel)]="newAgenda.morningActivity3" name="MorningActivity3">
+                       </div>
+                       <div class="form-group">
+                         <label for="InputAfternoonActivity">Afternoon Activity Options</label>
+                         <input type="text" class="form-control" placeholder="Afternoon Activity 1" [(ngModel)]="newAgenda.afternoonActivity1" name="AfternoonActivity1">
+                         <input type="text" class="form-control" placeholder="Afternoon Activity 2" [(ngModel)]="newAgenda.afternoonActivity2" name="AfternoonActivity2">
+                         <input type="text" class="form-control" placeholder="Afternoon Activity 3" [(ngModel)]="newAgenda.afternoonActivity3" name="AfternoonActivity3">
+                       </div>
+                       <div class="form-group">
+                         <label for="InputEveningActivity">Evening Activity Options</label>
+                         <input type="text" class="form-control" placeholder="Evening Activity 1" [(ngModel)]="newAgenda.eveningActivity1" name="EveningActivity1">
+                         <input type="text" class="form-control" placeholder="Evening Activity 2" [(ngModel)]="newAgenda.eveningActivity2" name="EveningActivity2">
+                         <input type="text" class="form-control" placeholder="Evening Activity 3" [(ngModel)]="newAgenda.eveningActivity3" name="eveningActivity3">
+                       </div>
+
+                      <div class="form-group">
+                         <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ booking._id }}">
+                       </div>
+
+
+                       <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value)">Send</button>
+                     </form>
+
+                     </div>
+                  </div>
+                  <hr>
+                </li>
+
+
+              </ul>
+              <br>
+
+        </div>
+      </div>
+      <div class="itinerary-link">
+        <p><a [routerLink]="['agenda']"> Make itinerary</a></p>
+      </div>
+    </tab>
+
+    <tab heading="Reviews">Reviews</tab>
+
+  </tabset>
+</div>
+</div>
+
+
+
+
+<div class="profile-page" *ngIf="currentUser.role === 'TRAVELER'">
+  <div class="user">
+    <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
+    <p id="username">{{ currentUser.name}}</p>
+  </div>
+
+
+  <tabset class="tabset" [justified]="true">
+    <tab heading="About">
+      <div class="details">
+          <p>Age: {{ currentUser.age}}</p>
+          <p>Interests: {{ currentUser.interests}}</p>
+          <p>Description: {{ currentUser.description}}</p>
+          <p>City: {{ currentUser.city}}</p>
+          <p>Languages: {{ currentUser.languages}}</p>
+
+          <div class="links">
+              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+                <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
+          </div>
+
+      </div>
+    </tab>
+    <tab heading="Bookings">
+      <div *ngIf="currentUser.bookings.length">
+              <ul>
+                <li *ngFor="let booking of currentUser.bookings"> {{ booking.city&nbsp;}} </li>
+              </ul>
+      </div>
+      <div class="itinerary-link">
+        <p><a [routerLink]="['contact']"> Make itinerary</a></p>
+      </div>
+    </tab>
+
+    <tab heading="Reviews">Reviews</tab>
+
+  </tabset>
+
 </div>

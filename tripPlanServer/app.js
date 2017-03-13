@@ -7,9 +7,10 @@ var bodyParser   = require('body-parser');
 const passport   = require('./config/passport');
 var auth         = require('./routes/auth');
 var users        = require('./routes/users');
+var agendas        = require('./routes/agendas');
 var cors         = require('cors');
 var requests     = require('./routes/requests');
-var multer = require('multer');
+var multer       = require('multer');
 
 
 
@@ -43,6 +44,7 @@ app.use('/', auth);
 app.use('/api/users', users);
 app.use('/api/booked', requests);
 app.use('/api/request', requests);
+app.use('/api/agenda', agendas);
 
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 

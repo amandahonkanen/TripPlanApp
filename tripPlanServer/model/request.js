@@ -9,6 +9,7 @@ const requestSchema = new Schema({
   city          : String,
   traveler      : {type: Schema.Types.ObjectId, ref: 'User'},
   expert        : {type: Schema.Types.ObjectId, ref: 'User'},
+  agenda        : [{ type: Schema.Types.ObjectId, ref: 'Agenda' }],
   whoIsTravelling: String,
   mainInterests : String,
   mustKnows     : String,

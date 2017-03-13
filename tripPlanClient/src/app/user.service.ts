@@ -84,5 +84,13 @@ export class UserService {
 
   }
 
+  makeAgenda(newAgenda) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(`${this.BASE_URL}/agenda`, newAgenda)
+    .map((res) => res.json())
+    .catch((err) => Observable.throw(err));
+
+  }
 
 }

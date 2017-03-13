@@ -18,6 +18,7 @@ import { RequestComponent } from './request/request.component';
 import { RequestFormComponent } from './request-form/request-form.component';
 
 import { AvatarComponent} from './avatar/avatar.component';
+import { AgendaComponent} from './agenda/agenda.component';
 
 
 
@@ -28,6 +29,7 @@ export const routes: Routes = [
     { path: 'users/:id/edit', component: EditComponent },
     { path: 'users/:id/avatar', component: AvatarComponent },
     { path: 'users/:id', component: ProfileComponent},
+    { path: 'users/:id/contact', component: AgendaComponent},
     { path: 'city/:id', component: ExpertDetailsComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'city', component: UserlistComponent},

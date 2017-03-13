@@ -25,6 +25,7 @@ import { ExpertDetailsComponent } from './expert-details/expert-details.componen
 import { RequestComponent } from './request/request.component';
 import { RequestFormComponent } from './request-form/request-form.component';
 import { AvatarComponent } from './avatar/avatar.component';
+import { AgendaComponent } from './agenda/agenda.component';
 
 
 
@@ -44,7 +45,8 @@ import { AvatarComponent } from './avatar/avatar.component';
     ExpertDetailsComponent,
     RequestComponent,
     RequestFormComponent,
-    AvatarComponent
+    AvatarComponent,
+    AgendaComponent
 
 ],
 

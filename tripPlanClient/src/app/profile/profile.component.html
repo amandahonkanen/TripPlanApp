@@ -1,12 +1,26 @@
-<div *ngIf="currentUser.role === 'EXPERT'">
-<img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
-<h4>Name:</h4><p>{{ currentUser.name}}</p>
-<h4>Age:</h4><p>{{ currentUser.age}}</p>
-<h4>Interests:</h4><p>{{ currentUser.interests}}</p>
-<h4>Description:</h4><p>{{ currentUser.description}}</p>
-<h4>City:</h4><p>{{ currentUser.city}}</p>
-<h4>Languages:</h4><p>{{ currentUser.languages}}</p>
-<a [routerLink]="['edit']"> Add your details! </a>
+<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
+  <div class="user">
+    <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
+
+  </div>
+
+    <div class="details">
+        <p id="username">{{ currentUser.name}}</p>
+        <p>Age: {{ currentUser.age}}</p>
+        <p>Interests: {{ currentUser.interests}}</p>
+        <p>Description: {{ currentUser.description}}</p>
+        <p>City: {{ currentUser.city}}</p>
+        <p>Languages: {{ currentUser.languages}}</p>
+
+    </div>
+
+    <div class="links">
+    <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+    <p><a [routerLink]="['edit']"> Add your details </a></p>
+    <p><a [routerLink]="['contact']"> Make itinerary</a></p>
+
+    </div>
+
 </div>
 
 
@@ -14,8 +28,4 @@
 <div *ngIf="currentUser.role === 'TRAVELER'">
   <h3>Welcome <p> {{ currentUser.name}} </p></h3>
   <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
-
-
 </div>
-
-<a [routerLink]="['avatar']"> Add your avatar! </a>

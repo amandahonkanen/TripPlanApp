@@ -4,8 +4,17 @@
 
 .image-circle {
   border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-.user {
-  margin-top: 20px;
+/*.user {
+  margin-top: 10px;
+}*/
+
+.userlist-search {
+  /*margin-bottom: 50px;*/
+}
+
+.row {
+  margin-top: 30px;
 }

@@ -96,10 +96,9 @@ export class SessionService implements CanActivate {
               // return false to indicate failed login
               return false;
             }
-        });
+        })
+        .catch((err) => Observable.throw(err));
   }
-
-
 
 
   logout() {

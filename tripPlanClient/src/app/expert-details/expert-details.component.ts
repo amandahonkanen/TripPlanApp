@@ -31,4 +31,8 @@ export class ExpertDetailsComponent implements OnInit {
         });
     }
 
+    goToAgenda(){
+      this.router.navigate([`city/:id/contact`]);
+    }
+
   }

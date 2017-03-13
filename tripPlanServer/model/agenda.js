@@ -4,13 +4,24 @@ const Request          = require("./request");
 
 const agendaSchema = new Schema({
   request           : {type: Schema.Types.ObjectId, ref: 'Request'},
-  breakfast         : Array,
-  lunch             : Array,
-  dinner            : Array,
-  morningActivity   : Array,
-  afternoonActivity : Array,
-  eveningActivity   : Array,
-  received          : {type: Boolean, default: false}
+  breakfast1         : String,
+  breakfast2         : String,
+  breakfast3         : String,
+  lunch1         : String,
+  lunch2         : String,
+  lunch3         : String,
+  dinner1         : String,
+  dinner2         : String,
+  dinner3         : String,
+  morningActivity1   : String,
+  morningActivity2   : String,
+  morningActivity3   : String,
+  afternoonActivity1 : String,
+  afternoonActivity2 : String,
+  afternoonActivity3 : String,
+  eveningActivity1   : String,
+  eveningActivity2   : String,
+  eveningActivity3   : String,
 });
 
 const Agenda = mongoose.model('Agenda', agendaSchema);

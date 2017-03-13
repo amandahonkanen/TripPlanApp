@@ -1,18 +1,21 @@
 .image-circle {
+  height: 150px;
   border-radius: 50%;
   margin-bottom: 20px;
   margin-right: 30px;
   float: left;
 }
-
 .user {
   /*float: left;*/
+<<<<<<< HEAD
 
+=======
+>>>>>>> a4a0c180b94921f9c75009fb94d6115fe8200f76
 }
-
 .profile-page {
   padding-top: 40px;
 }
+<<<<<<< HEAD
 
 #username {
   font-size: 24px;
@@ -33,4 +36,28 @@
 
 .itinerary-link {
   margin-top: 30px;
+=======
+#username {
+  font-size: 24px;
+  float: left;
+}
+.links {
+/*float: right;*/
+}
+.tabset {
+  float: right;
+    background-color: white;
+}
+
+
+.details {
+  margin-top: 30px;
+}
+.itinerary-link {
+  margin-top: 30px;
+}
+
+.button{
+  width: 100%;
+>>>>>>> a4a0c180b94921f9c75009fb94d6115fe8200f76
 }

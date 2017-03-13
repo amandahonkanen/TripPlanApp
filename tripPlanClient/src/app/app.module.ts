@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { TabsModule } from 'ng2-bootstrap';
 import { CollapseModule } from 'ng2-bootstrap';
-
-
 import { RouterModule } from "@angular/router";
 import { routes } from './app.routing';
 

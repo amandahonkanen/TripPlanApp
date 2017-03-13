@@ -7,6 +7,7 @@ var bodyParser   = require('body-parser');
 const passport   = require('./config/passport');
 var auth         = require('./routes/auth');
 var users        = require('./routes/users');
+var agendas        = require('./routes/agendas');
 var cors         = require('cors');
 var requests     = require('./routes/requests');
 var multer = require('multer');

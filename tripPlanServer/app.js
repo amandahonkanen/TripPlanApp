@@ -10,6 +10,7 @@ var users        = require('./routes/users');
 var cors         = require('cors');
 var requests     = require('./routes/requests');
 var multer = require('multer');
+var agendas = require('./routes/agendas');
 
 
 
@@ -43,6 +44,7 @@ app.use('/', auth);
 app.use('/api/users', users);
 app.use('/api/booked', requests);
 app.use('/api/request', requests);
+app.use('/api/agenda', agendas);
 
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 

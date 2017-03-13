@@ -1,52 +1,62 @@
-<<<<<<< HEAD
-<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
-  <div class="user">
-    <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
-
-  </div>
-
-    <div class="details">
-        <p id="username">{{ currentUser.name}}</p>
-        <p>Age: {{ currentUser.age}}</p>
-        <p>Interests: {{ currentUser.interests}}</p>
-        <p>Description: {{ currentUser.description}}</p>
-        <p>City: {{ currentUser.city}}</p>
-        <p>Languages: {{ currentUser.languages}}</p>
-        <h4>Bookings:</h4>
-        <div *ngIf="currentUser.bookings.length">
-                <ul>
-                  <li *ngFor="let booking of currentUser.bookings"> {{ booking&nbsp;}} </li>
-                </ul>
-              </div>
-        </div>
-
-
-    </div>
-
-    <div class="links">
-    <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
-    <p><a [routerLink]="['edit']"> Add your details </a></p>
-    <p><a [routerLink]="['contact']"> Make itinerary</a></p>
-
-    </div>
-
 <ol class="breadcrumb">
 <li><a [routerLink]="['/']">Home</a></li>
 <li class="active">Dashboard</li>
 <!-- <li><a [routerLink]="['/']">Listings</a></li> -->
-
 </ol>
+
+<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
+  <div class="user">
+    <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
+    <p id="username">{{ currentUser.name}}</p>
+  </div>
+
+
+
+  <tabset class="tabset" [justified]="true">
+    <tab heading="About">
+      <div class="details">
+          <p>Age: {{ currentUser.age}}</p>
+          <p>Interests: {{ currentUser.interests}}</p>
+          <p>Description: {{ currentUser.description}}</p>
+          <p>City: {{ currentUser.city}}</p>
+          <p>Languages: {{ currentUser.languages}}</p>
+
+          <div class="links">
+              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+              <p><a [routerLink]="['edit']"> Add your details </a></p>
+          </div>
+
+      </div>
+    </tab>
+    <tab heading="Bookings">
+      <div *ngIf="currentUser.bookings.length">
+              <ul>
+                <li *ngFor="let booking of currentUser.bookings"> <a [routerLink]="['/request', booking._id]">{{booking.name}}</a><p>{{booking.city}}</p></li>
+              </ul>
+      </div>
+      <div class="itinerary-link">
+        <p><a [routerLink]="['contact']"> Make itinerary</a></p>
+      </div>
+    </tab>
+
+    <tab heading="Reviews">Reviews</tab>
+
+  </tabset>
+
+</div>
+
+
 
 
 
 <div *ngIf="currentUser.role === 'TRAVELER'">
+  <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
   <h3>Welcome <p> {{ currentUser.name}} </p></h3>
   <h4>Bookings:</h4>
   <div *ngIf="currentUser.bookings.length">
           <ul>
             <li *ngFor="let booking of currentUser.bookings"> {{ booking.city }} </li>
           </ul>
-        </div>
 
   </div>
   <a [routerLink]="['avatar']"> Add your avatar! </a>

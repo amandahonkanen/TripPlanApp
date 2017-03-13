@@ -1,61 +1,71 @@
 
-
+<div class="expert-page">
 <img class="image-circle" style="width: 150px"src="{{user.image}}" />
-<h5>Name:</h5>
-  <p>{{ user.name }}</p>
-<h5>Age:</h5>
-  <p>{{ user.age }}</p>
-<h5>Interests:</h5>
-  <p>{{ user.interests }}</p>
-<h5>Languages:</h5>
-  <p>{{ user.languages }}</p>
-<h5>Expertise location:</h5>
-  <p>{{ user.city }}</p>
+  <div class="expert-details">
+    <h5>Name:</h5>
+      <p>{{ user.name }}</p>
+    <h5>Age:</h5>
+      <p>{{ user.age }}</p>
+    <h5>Interests:</h5>
+      <p>{{ user.interests }}</p>
+    <h5>Languages:</h5>
+      <p>{{ user.languages }}</p>
+    <h5>Expertise location:</h5>
+      <p>{{ user.city }}</p>
+  </div>
+</div>
+
+<p id="seperate-line">_______________________________________________________________________________________</p>
 
 
-<br>
-<button class="btn btn-success" >Contact {{ user.name }}</button>
+<div class="request-button">
+<button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button>
  <!-- <button id="expertList" class="btn btn-success" (click)="goToRequest()"><a style="text-decoration:none; color:white;"> Contact {{ user.name }}</a></button> -->
+</div>
 
 
 
-_______________________________________________________________________________________
+<div class="request-form" (collapsed)="collapsed($event)"
+    [collapse]="isCollapsed"
+     (expanded)="expanded($event)"
+     >
+  <!-- <p>Traveler Name {{traveler.name}}</p>
+  <p>Expert Name {{user.name}}</p> -->
+    <form>
+      <div class="form-group">
+        <label for="InputName">Name:</label>
+        <input type="text" class="form-control" id="InputName" placeholder="Name" [(ngModel)]="newRequest.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="InputStartDate">Start Date:</label>
+        <input type="date" class="form-control" id="InputStartDate" placeholder="From" [(ngModel)]="newRequest.startDate" name="startDate">
+      </div>
+      <div class="form-group">
+        <label for="InputEndDate">End Date:</label>
+        <input type="date" class="form-control" id="InputEndDate" placeholder="To" [(ngModel)]="newRequest.endDate"  name="endDate">
+      </div>
+      <div class="form-group">
+        <label for="InputCity">Where are you travelling?</label>
+        <input type="text" class="form-control" id="InputCity" placeholder="city" [(ngModel)]="newRequest.city" name="city">
+      </div>
+      <div class="form-group">
+        <label for="InputWhoIsTravelling">Who are you travelling with?</label>
+        <input type="text" class="form-control" id="InputWhoIsTravelling" placeholder="Friends, Couple, Solo, etc." [(ngModel)]="newRequest.whoIsTravelling" name="whoIsTravelling">
+      </div>
+      <div class="form-group">
+        <label for="InputMainInterests">What are your main interests:</label>
+        <input type="text" class="form-control" id="InputMainInterests" placeholder="Nightlife, Cultural, Food, etc." [(ngModel)]="newRequest.mainInterests" name="mainInterests" >
+      </div>
+      <div class="form-group">
+        <label for="InputMustKnows">Anything the expert MUST know about you:</label>
+        <input type="text" class="form-control" id="InputMustKnows" placeholder="Vegetarian, wheel chair accessibility, etc." [(ngModel)]="newRequest.mustKnows" name="mustKnows">
+      </div>
+      <div class="form-group">
+
+        <input type="hidden" class="form-control" id="expert"  [(ngModel)]="user._id" name="expert">
+      </div>
 
 
-
-
-Traveler Name {{traveler.name}}
-Expert Name {{user.name}}
-<form>
-  <div class="form-group">
-    <label for="InputStartDate">Start Date:</label>
-    <input type="date" class="form-control" id="InputStartDate" placeholder="From" [(ngModel)]="newRequest.startDate" name="startDate">
-  </div>
-  <div class="form-group">
-    <label for="InputEndDate">End Date:</label>
-    <input type="date" class="form-control" id="InputEndDate" placeholder="To" [(ngModel)]="newRequest.endDate"  name="endDate">
-  </div>
-  <div class="form-group">
-    <label for="InputCity">Where are you travelling?</label>
-    <input type="text" class="form-control" id="InputCity" placeholder="city" [(ngModel)]="newRequest.city" name="city">
-  </div>
-  <div class="form-group">
-    <label for="InputWhoIsTravelling">Who are you travelling with?</label>
-    <input type="text" class="form-control" id="InputWhoIsTravelling" placeholder="Friends, Couple, Solo, etc." [(ngModel)]="newRequest.whoIsTravelling" name="whoIsTravelling">
-  </div>
-  <div class="form-group">
-    <label for="InputMainInterests">What are your main interests:</label>
-    <input type="text" class="form-control" id="InputMainInterests" placeholder="Nightlife, Cultural, Food, etc." [(ngModel)]="newRequest.mainInterests" name="mainInterests" >
-  </div>
-  <div class="form-group">
-    <label for="InputMustKnows">Anything the expert MUST know about you:</label>
-    <input type="text" class="form-control" id="InputMustKnows" placeholder="Vegetarian, wheel chair accessibility, etc." [(ngModel)]="newRequest.mustKnows" name="mustKnows">
-  </div>
-  <div class="form-group">
-
-    <input type="hidden" class="form-control" id="expert"  [(ngModel)]="user._id" name="expert">
-  </div>
-
-
-  <button type="submit" class="btn btn-default btn-primary" (click)="booking(request)">Send the Request</button>
-</form>
+      <button type="submit" class="btn btn-default btn-primary" (click)="booking(request)">Send the Request</button>
+    </form>
+</div>

@@ -1,11 +1,8 @@
-<h3>Request confirm page!</h3>
+<h3>Request by {{request.name}}</h3>
 
-<p>{{request._id}}</p>
-<p>{{request.startDate}}</p>
-<p>{{request.endDate}}</p>
+<p>{{request.startDate | date:"yMMMMEEEEd" }}</p>
+<p>{{request.endDate | date:"yMMMMEEEEd" }}</p>
 <p>{{request.city}}</p>
-<p>{{request.traveler}}</p>
-<p>{{request.expert}}</p>
 <p>{{request.whoIsTravelling}}</p>
 <p>{{request.mainInterests}}</p>
 <p>{{request.mustKnows}}</p>

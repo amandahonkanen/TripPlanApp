@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { TabsModule } from 'ng2-bootstrap';
+import { CollapseModule } from 'ng2-bootstrap';
 
 
 import { RouterModule } from "@angular/router";
@@ -44,7 +46,7 @@ import { AgendaComponent } from './agenda/agenda.component';
     SearchPipe,
     ExpertDetailsComponent,
     RequestComponent,
-    RequestFormComponent,
+    RequestConfirmComponent,
     AvatarComponent,
     AgendaComponent
 
@@ -54,7 +56,9 @@ import { AgendaComponent } from './agenda/agenda.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    TabsModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   providers: [SessionService, UserService, BookingService],
   bootstrap: [AppComponent]

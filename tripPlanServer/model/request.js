@@ -4,6 +4,7 @@ const User          = require("./user");
 
 
 const requestSchema = new Schema({
+  name          : String,
   startDate     : Date,
   endDate       : Date,
   city          : String,

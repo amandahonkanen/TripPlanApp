@@ -15,6 +15,7 @@ export class ExpertDetailsComponent implements OnInit {
 
 
   newRequest = {
+    name:'',
     startDate: '',
     endDate: '',
     city: '',
@@ -26,10 +27,12 @@ export class ExpertDetailsComponent implements OnInit {
 
   };
 
+
+
     constructor(
     	private router: Router,
     	private route: ActivatedRoute,
-      private userService: UserService,
+      private userService: UserService
 
     ) {}
 
@@ -79,6 +82,16 @@ export class ExpertDetailsComponent implements OnInit {
           (error) => { console.log(error)}
         );
 
+     }
+
+     public isCollapsed:boolean = true;
+
+     public collapsed(event:any):void {
+       console.log(event);
+     }
+
+     public expanded(event:any):void {
+       console.log(event);
      }
 
  }

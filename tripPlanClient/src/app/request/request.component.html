@@ -1,13 +1,16 @@
 
 <!-- {{user | json}} -->
-<div *ngIf="user.bookings.length">
+<!-- <div *ngIf="user.bookings.length !== 0">
         <ul>
           <li *ngFor="let booking of user.bookings"> {{ booking&nbsp;}} </li>
         </ul>
       </div>
 
-{{user.bookings}}
+{{user.bookings}} -->
 
+<p>Your request has been sent! You will receive your agenda in a couple of days!</p>
+<p>View your bookings here:</p> <a [routerLink]="['/users', user._id]">PROFILE</a>
+<p>Book another memorable experience?</p> <a [routerLink]="['/']">HOME</a>
 <!-- <p> Start: {{ request.startDate | date:"yMMMMEEEEd"}}</p>
 <p> End: {{ request.endDate | date:"yMMMMEEEEd"}}</p>
 <p> Who: {{request.whoIsTravelling}}</p>

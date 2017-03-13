@@ -72,7 +72,6 @@ export class UserService {
     return this.http.post(`${this.BASE_URL}/request`, newRequest)
     .map((res) => res.json())
     .catch((err) => Observable.throw(err));
-
   }
 
 //Request per User

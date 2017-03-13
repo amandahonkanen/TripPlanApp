@@ -13,5 +13,5 @@ const agendaSchema = new Schema({
   received          : {type: Boolean, default: false}
 });
 
-const Agenda = mongoose.model('Agenda', requestSchema);
+const Agenda = mongoose.model('Agenda', agendaSchema);
 module.exports = Agenda;

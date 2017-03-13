@@ -3,6 +3,7 @@ var router      = express.Router();
 const mongoose  = require('mongoose');
 const User      = require('../model/user');
 const Request   = require("../model/request");
+const Agenda   = require("../model/agenda");
 
 //Get all requests
 router.get('/', function(req, res, next) {
@@ -104,21 +105,24 @@ router.get('/booked'), (req, res, next) => {
           });
       });
     });
-}
+};
 
 
 router.get('/:requestId', (req, res, next) => {
   let requestId = req.params.requestId;
 
-  Request.findById(requestId, (err, booking) => {
-    console.log("REQUEST:",booking);
-    if(!mongoose.Types.ObjectId.isValid(req.params.requestId)) {
-      return res.status(400).json({ message: 'Specified id is not valid' });
-    }
-    return res.json(booking);
+  Request.findOne({_id: requestId})
+      .populate("agenda")
+      .exec((err, bookings) => {
+         if (err) {
+           next(err);
+           return;
+         } else {
+           res.status(200).json(bookings);
+           return;
+         }
+      });
     });
-
-});
 
 
 module.exports = router;

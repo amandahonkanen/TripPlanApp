@@ -7,15 +7,11 @@
 }
 .user {
   /*float: left;*/
-<<<<<<< HEAD
-
-=======
->>>>>>> a4a0c180b94921f9c75009fb94d6115fe8200f76
 }
+
 .profile-page {
   padding-top: 40px;
 }
-<<<<<<< HEAD
 
 #username {
   font-size: 24px;
@@ -36,11 +32,7 @@
 
 .itinerary-link {
   margin-top: 30px;
-=======
-#username {
-  font-size: 24px;
-  float: left;
-}
+
 .links {
 /*float: right;*/
 }
@@ -59,5 +51,4 @@
 
 .button{
   width: 100%;
->>>>>>> a4a0c180b94921f9c75009fb94d6115fe8200f76
 }

@@ -23,7 +23,7 @@ import { SearchPipe } from './pipes/search.pipe';
 
 import { ExpertDetailsComponent } from './expert-details/expert-details.component';
 import { RequestComponent } from './request/request.component';
-import { RequestFormComponent } from './request-form/request-form.component';
+import { RequestConfirmComponent } from './request-confirm/request-confirm.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { AgendaComponent } from './agenda/agenda.component';
 

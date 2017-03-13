@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
   <div class="user">
     <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
@@ -11,6 +12,14 @@
         <p>Description: {{ currentUser.description}}</p>
         <p>City: {{ currentUser.city}}</p>
         <p>Languages: {{ currentUser.languages}}</p>
+        <h4>Bookings:</h4>
+        <div *ngIf="currentUser.bookings.length">
+                <ul>
+                  <li *ngFor="let booking of currentUser.bookings"> {{ booking&nbsp;}} </li>
+                </ul>
+              </div>
+        </div>
+
 
     </div>
 
@@ -21,11 +30,25 @@
 
     </div>
 
-</div>
+<ol class="breadcrumb">
+<li><a [routerLink]="['/']">Home</a></li>
+<li class="active">Dashboard</li>
+<!-- <li><a [routerLink]="['/']">Listings</a></li> -->
+
+</ol>
 
 
 
 <div *ngIf="currentUser.role === 'TRAVELER'">
   <h3>Welcome <p> {{ currentUser.name}} </p></h3>
+  <h4>Bookings:</h4>
+  <div *ngIf="currentUser.bookings.length">
+          <ul>
+            <li *ngFor="let booking of currentUser.bookings"> {{ booking.city }} </li>
+          </ul>
+        </div>
+
+  </div>
+  <a [routerLink]="['avatar']"> Add your avatar! </a>
   <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
 </div>

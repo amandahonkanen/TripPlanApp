@@ -5,6 +5,7 @@
 <div>
 
   <div class="row" >
+
           <div class="col-sm-3" *ngFor="let user of users | filter: 'name': pattern; let i = index" >
             <div class="user"  *ngIf="user.role == 'EXPERT'">
               <img class="image-circle" style="width: 150px"src="{{user.image}}" />
@@ -17,6 +18,10 @@
           </div>
 
   </div>
+
+
+
+
 
 
 

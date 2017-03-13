@@ -1,7 +1,16 @@
 
-<p> Start: {{ request.startDate | date:"yMMMMEEEEd"}}</p>
+<!-- {{user | json}} -->
+<div *ngIf="user.bookings.length">
+        <ul>
+          <li *ngFor="let booking of user.bookings"> {{ booking&nbsp;}} </li>
+        </ul>
+      </div>
+
+{{user.bookings}}
+
+<!-- <p> Start: {{ request.startDate | date:"yMMMMEEEEd"}}</p>
 <p> End: {{ request.endDate | date:"yMMMMEEEEd"}}</p>
 <p> Who: {{request.whoIsTravelling}}</p>
 <p> Traveler: {{request.traveler}}</p>
 <p> Expert: {{request.expert}}</p>
-<p> Main Interests: {{request.mainInterests}}</p>
+<p> Main Interests: {{request.mainInterests}}</p> -->

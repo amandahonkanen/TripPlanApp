@@ -34,13 +34,24 @@ router.get('/:id', (req, res) => {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
 
-  User.findById(req.params.id, (err, Users) => {
-      if (err) {
-        return res.send(err);
-      }
-
-      return res.json(Users);
-    });
+  // User.findById(req.params.id, (err, Users) => {
+  //     if (err) {
+  //       return res.send(err);
+  //     }
+  //
+  //     return res.json(Users);
+  //   });
+  User.findOne({_id: req.params.id})
+      .populate("bookings")
+      .exec((err, users) => {
+         if (err) {
+           next(err);
+           return;
+         } else {
+           res.status(200).json(users);
+           return;
+         }
+        });
 });
 
 /* EDIT a User. */

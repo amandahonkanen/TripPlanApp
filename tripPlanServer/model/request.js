@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const requestSchema = new Schema({
   startDate     : Date,
   endDate       : Date,
+  city          : String,
   traveler      : {type: Schema.Types.ObjectId, ref: 'User'},
   expert        : {type: Schema.Types.ObjectId, ref: 'User'},
   whoIsTravelling: String,
@@ -11,6 +12,11 @@ const requestSchema = new Schema({
   mustKnows     : String,
   completed     : {type: Boolean, default: false},
   accepted      : {type: Boolean, default: false}
+}, {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
 });
 
 const Request = mongoose.model('Request', requestSchema);

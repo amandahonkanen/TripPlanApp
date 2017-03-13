@@ -13,6 +13,7 @@ export class UserlistComponent implements OnInit {
   users;
   city: string
 
+
   constructor(
     private user: UserService,
     private router: Router,

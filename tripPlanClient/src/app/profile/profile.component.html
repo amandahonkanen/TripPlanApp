@@ -1,3 +1,10 @@
+<ol class="breadcrumb">
+<li><a [routerLink]="['/']">Home</a></li>
+<li class="active">Dashboard</li>
+<!-- <li><a [routerLink]="['/']">Listings</a></li> -->
+
+</ol>
+
 <div *ngIf="currentUser.role === 'EXPERT'">
 <img class="image-circle" style="width: 150px"src="{{currentUser.image}}" />
 <h4>Name:</h4><p>{{ currentUser.name}}</p>
@@ -6,6 +13,12 @@
 <h4>Description:</h4><p>{{ currentUser.description}}</p>
 <h4>City:</h4><p>{{ currentUser.city}}</p>
 <h4>Languages:</h4><p>{{ currentUser.languages}}</p>
+<h4>Bookings:</h4>
+<div *ngIf="currentUser.bookings.length">
+        <ul>
+          <li *ngFor="let booking of currentUser.bookings"> {{ booking&nbsp;}} </li>
+        </ul>
+      </div>
 <a [routerLink]="['edit']"> Add your details! </a>
 </div>
 
@@ -13,9 +26,17 @@
 
 <div *ngIf="currentUser.role === 'TRAVELER'">
   <h3>Welcome <p> {{ currentUser.name}} </p></h3>
+  <h4>Bookings:</h4>
+  <div *ngIf="currentUser.bookings.length">
+          <ul>
+            <li *ngFor="let booking of currentUser.bookings"> {{ booking.city }} </li>
+          </ul>
+        </div>
+
   <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
 
-
 </div>
+
+
 
 <a [routerLink]="['avatar']"> Add your avatar! </a>

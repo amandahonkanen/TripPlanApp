@@ -41,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', auth);
 app.use('/api/users', users);
+app.use('/api/booked', requests);
 app.use('/api/request', requests);
 
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);

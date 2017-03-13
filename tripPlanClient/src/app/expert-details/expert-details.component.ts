@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-expert-details',
   templateUrl: './expert-details.component.html',
@@ -9,26 +10,74 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ExpertDetailsComponent implements OnInit {
 
-  users: any = {};
+  user: any = {};
+  traveler: any ={};
+
+
+  newRequest = {
+    startDate: '',
+    endDate: '',
+    city: '',
+    traveler:'',
+    expert: '',
+    whoIsTravelling: '',
+    mainInterests: '',
+    mustKnows: '',
+
+  };
 
     constructor(
     	private router: Router,
     	private route: ActivatedRoute,
-      private user: UserService
+      private userService: UserService,
+
     ) {}
 
-    ngOnInit() {
-      console.log(this.route)
-    	this.route.params.subscribe(params => {
-        this.getExpertDetails(params['id']);
-      });
-    }
 
-    getExpertDetails(id) {
-      this.user.get(id)
-        .subscribe((users) => {
-          this.user = users;
-        });
-    }
+      ngOnInit() {
+     console.log(this.route)
+   	  this.route.params.subscribe(params => {
+      this.getUserDetails(params['id']);
+     });
 
-  }
+     this.traveler = JSON.parse(localStorage.getItem("user"))
+     let user = JSON.parse(localStorage.getItem("user"))
+     this.newRequest.traveler = this.traveler._id
+     this.newRequest.expert = this.user._id
+
+
+
+     console.log("On ngInit",this.traveler.name,this.traveler._id)
+
+     console.log("traveler",this.newRequest.traveler)
+     console.log("expert",this.newRequest.expert)
+
+
+   }
+
+   getUserDetails(id) {
+
+     this.userService.get(id)
+       .subscribe((user) => {
+         this.user = user;
+         console.log("user in getDetails: ", user)
+       });
+
+   }
+
+
+
+     booking(request) {
+        console.log("user in booking(expert) ", this.user._id)
+       this.newRequest.expert = this.user._id
+     	 this.userService.booking(this.newRequest)
+         .subscribe(result => {
+            console.log("result booking ", result)
+            this.router.navigate(['booked']);
+          },
+          (error) => { console.log(error)}
+        );
+
+     }
+
+ }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BookingService } from '../booking.service';
+import { UserService } from '../user.service';
+import { SessionService } from '../session.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -10,26 +11,35 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RequestComponent implements OnInit {
 
-  request:  any = {};
 
-  constructor(
-  	private router: Router,
-  	private route: ActivatedRoute,
-    private bookingService: BookingService
-  ) {}
+  user: Object;
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.getRequest(params['id']);
+ constructor(
+ private session: SessionService,
+ private router:  Router,
+ private userService: UserService) {
+     this.user = JSON.parse(localStorage.getItem("user"));
+ }
 
-      console.log(params['id']);
-    });
-  }
+ ngOnInit() {
+   console.log(this.user)
+   console.log(localStorage)
 
-  getRequest(id) {
-    this.bookingService.getRequest(id)
-      .subscribe((request) => {
-        this.request = request;
-      });
-  }
-}
+
+   this.userService.booked()
+       .subscribe(result => {
+           if (result === true) {
+               // login successful
+               console.log('result ok', result);
+
+           } else {
+               console.log('result ko', result);
+
+               // login failed
+               // this.error = 'Username or password is incorrect';
+           }
+       });
+
+   }
+
+ }

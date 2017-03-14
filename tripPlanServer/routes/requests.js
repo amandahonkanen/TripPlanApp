@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', (req, res, next) => {
 
+ const name = req.body.name;
  const startDate = req.body.startDate;
  const endDate = req.body.endDate;
  const city = req.body.city;
@@ -28,6 +29,7 @@ router.post('/', (req, res, next) => {
  const mustKnows = req.body.mustKnows;
 
   var newRequest = new Request({
+     name,
      startDate,
      endDate,
      city,

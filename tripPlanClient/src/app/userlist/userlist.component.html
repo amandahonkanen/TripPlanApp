@@ -1,11 +1,16 @@
 <!-- col-sm-offset-3 -->
-<div class="userlist-search">
-  <label for="InputName"> Search Name: </label>
-  <input id="InputName" placeholder="Name" type="text" [(ngModel)]="pattern">
-<div>
 
-  <div class="row" >
 
+  <!-- <div *ngIf="users.city !== cityName">
+    <p>No experts in this location yet! Try a different city!</p>
+  </div> -->
+
+
+  <div class="row">
+    <div class="userlist-search">
+      <label for="InputName"> Search Name: </label>
+      <input id="InputName" placeholder="Name" type="text" [(ngModel)]="pattern">
+    <div>
           <div class="col-sm-3" *ngFor="let user of users | filter: 'name': pattern; let i = index" >
             <div class="user"  *ngIf="user.role == 'EXPERT'">
               <img class="image-circle" style="width: 150px"src="{{user.image}}" />

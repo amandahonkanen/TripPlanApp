@@ -15,6 +15,7 @@ const requestSchema = new Schema({
   mustKnows       : String,
   completed       : {type: Boolean, default: false},
   accepted        : {type: Boolean, default: false}
+
 }, {
     timestamps: {
       createdAt: "created_at",

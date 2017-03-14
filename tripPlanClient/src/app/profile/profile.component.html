@@ -21,10 +21,11 @@
           <p>City: {{ currentUser.city}}</p>
           <p>Languages: {{ currentUser.languages}}</p>
 
-          <div class="links">
-              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
-              <p><a [routerLink]="['edit']"> Add your details </a></p>
-          </div>
+
+  <div class="links">
+      <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+      <p><a [routerLink]="['edit']"> Add your details </a></p>
+  </div>
 
       </div>
     </tab>
@@ -33,7 +34,7 @@
       <div *ngIf="currentUser.bookings.length">
 
               <ul>
-                <li *ngFor="let booking of currentUser.bookings">
+                <li *ngFor="let booking of currentUser.bookings"><a [routerLink]="['/request', booking._id]">{{booking.name}}</a>
                   {{ booking.city&nbsp;}}
                   <div class="request-button">
                     <button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Plan Trip here</button>
@@ -107,12 +108,12 @@
                          <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ booking._id }}">
                        </div>
 
+
                        <div class="form-group">
                           <input type="hidden" class="form-control" id="user" #userInput value="{{ booking.traveler }}">
                         </div>
-
-
-                       <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value, userInput.value)">Send</button>
+                       
+                       <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value)">Send</button>
                      </form>
                       {{user.name}}
                      </div>
@@ -122,23 +123,15 @@
 
 
               </ul>
+
+              </div>
+              </div>
+            </tab>
+
+            <tab heading="Reviews">Reviews</tab>
+
+
               <br>
-
-        </div>
-      </div>
-      <div class="itinerary-link">
-        <p><a [routerLink]="['agenda']"> Make itinerary</a></p>
-      </div>
-    </tab>
-
-    <tab heading="Reviews">Reviews</tab>
-
-  </tabset>
-</div>
-</div>
-
-
-
 
 <div class="profile-page" *ngIf="currentUser.role === 'TRAVELER'">
   <div class="user">

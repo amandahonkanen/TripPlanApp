@@ -8,13 +8,25 @@
 .user {
   /*float: left;*/
 }
+
 .profile-page {
   padding-top: 40px;
 }
+
 #username {
   font-size: 24px;
   float: left;
 }
+
+
+.tabset {
+  float: right;
+}
+
+.details {
+  margin-top: 30px;
+}
+
 .links {
 /*float: right;*/
 }

@@ -10,7 +10,8 @@ var users        = require('./routes/users');
 var agendas        = require('./routes/agendas');
 var cors         = require('cors');
 var requests     = require('./routes/requests');
-var multer       = require('multer');
+var multer = require('multer');
+var agendas = require('./routes/agendas');
 
 
 

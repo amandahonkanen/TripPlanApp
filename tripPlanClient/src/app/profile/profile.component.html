@@ -21,11 +21,10 @@
           <p>City: {{ currentUser.city}}</p>
           <p>Languages: {{ currentUser.languages}}</p>
 
-
-  <div class="links">
-      <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
-      <p><a [routerLink]="['edit']"> Add your details </a></p>
-  </div>
+          <div class="links">
+              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+              <p><a [routerLink]="['edit']"> Add your details </a></p>
+          </div>
 
       </div>
     </tab>
@@ -34,7 +33,7 @@
       <div *ngIf="currentUser.bookings.length">
 
               <ul>
-                <li *ngFor="let booking of currentUser.bookings"><a [routerLink]="['/request', booking._id]">{{booking.name}}</a>
+                <li *ngFor="let booking of currentUser.bookings">
                   {{ booking.city&nbsp;}}
                   <div class="request-button">
                     <button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Plan Trip here</button>
@@ -45,7 +44,7 @@
                      (expanded)="expanded($event)">
 
                      <div class = "col-xs-12" >
-                       <div class="form-group">
+                       <!-- <div class="form-group">
                        <label for="numberDays">Number of days </label>
                        <select>
                          <option value=1>1</option>
@@ -58,8 +57,10 @@
                          <option value=8>8</option>
                          <option value=9>9</option>
                        </select>
-                       </div>
-                     <form>
+                       </div> -->
+                       <input #box (keyup.enter)="onEnter(box.value)">
+
+                     <form *ngFor="let item of onEnter(value)">
                        <div class="form-group">
                          <label for="InputBreakfast">Breakfast Options</label>
                          <input type="text" class="form-control"  placeholder="Breakfast 1" [(ngModel)]="newAgenda.breakfast1" name="breakfast">
@@ -104,9 +105,10 @@
                          <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ booking._id }}">
                        </div>
 
-                       <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value)">Send</button>
-                     </form>
 
+
+                     </form>
+                    <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value)">Send</button>
                      </div>
                   </div>
                   <hr>
@@ -114,15 +116,23 @@
 
 
               </ul>
-
-              </div>
-              </div>
-            </tab>
-
-            <tab heading="Reviews">Reviews</tab>
-
-
               <br>
+
+        </div>
+      </div>
+      <div class="itinerary-link">
+        <p><a [routerLink]="['agenda']"> Make itinerary</a></p>
+      </div>
+    </tab>
+
+    <tab heading="Reviews">Reviews</tab>
+
+  </tabset>
+</div>
+</div>
+
+
+
 
 <div class="profile-page" *ngIf="currentUser.role === 'TRAVELER'">
   <div class="user">

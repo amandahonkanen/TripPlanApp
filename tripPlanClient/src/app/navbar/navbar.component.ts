@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from './../user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   isAuth: boolean;
+  user;
 
   constructor(
   	private session: SessionService,
@@ -21,8 +23,12 @@ export class NavbarComponent implements OnInit {
         // user will be false if logged out
         // or user object if logged in.
           console.log("in navbar event")
+
           this.isAuth = isAuth;
+
         });
+        this.user = JSON.parse(localStorage.getItem("user"))
+
   }
 
   ngOnInit() {
@@ -31,7 +37,6 @@ export class NavbarComponent implements OnInit {
     } else {
       this.isAuth = false;
     }
-
 
   };
 

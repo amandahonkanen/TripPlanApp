@@ -19,7 +19,9 @@
         <li *ngIf="!isAuth"><a [routerLink]="['login']">Login</a></li>
         <!-- <li *ngIf="isAuth">Signed in as {{user.name}}</li> -->
         <li *ngIf="isAuth"><a (click)="logout()">Logout</a></li>
+        <li *ngIf="isAuth"><a [routerLink]="['/users', user._id]">Your profile</a></li>
         <li *ngIf="!isAuth"><a [routerLink]="['signup']">Signup</a></li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->

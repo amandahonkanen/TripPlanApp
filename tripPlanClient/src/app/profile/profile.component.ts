@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   agenda: any = {};
   booking: any ={};
   myInput;
+  value= '';
+  numberValue;
 
   newAgenda = {
     request: '',
@@ -73,7 +75,6 @@ export class ProfileComponent implements OnInit {
   }
 
   makeAgenda(bookingId) {
-
     console.log("new Agenda", this.newAgenda);
     console.log("newAgenda:",this.newAgenda.request)
     this.newAgenda.request = bookingId
@@ -89,6 +90,8 @@ export class ProfileComponent implements OnInit {
 
   }
 
+
+
   public isCollapsed:boolean = true;
 
      public collapsed(event:any):void {
@@ -98,6 +101,19 @@ export class ProfileComponent implements OnInit {
      public expanded(event:any):void {
       //  console.log(event);
      }
+
+     onEnter(value: string) {
+       this.value = value;
+      console.log(this.value);
+      this.numberValue = Number(value);
+      var items = [];
+      for(var i = 1; i <= this.numberValue; i++){
+        items.push(i);
+        console.log(items);
+      }
+      return items;
+
+    }
 
 
 }

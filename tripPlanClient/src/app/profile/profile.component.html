@@ -60,6 +60,10 @@
                        </div>
                      <form>
                        <div class="form-group">
+                         <label for="InputjourneyTitle">Journey Title</label>
+                         <input type="text" class="form-control" placeholder="A catchy  title for the journey" [(ngModel)]="newAgenda.journeyTitle" name="journeyTitle">
+                       </div>
+                       <div class="form-group">
                          <label for="InputBreakfast">Breakfast Options</label>
                          <input type="text" class="form-control"  placeholder="Breakfast 1" [(ngModel)]="newAgenda.breakfast1" name="breakfast">
                          <input type="text" class="form-control" placeholder="Breakfast 2" [(ngModel)]="newAgenda.breakfast2" name="breakfast">
@@ -103,10 +107,14 @@
                          <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ booking._id }}">
                        </div>
 
+                       <div class="form-group">
+                          <input type="hidden" class="form-control" id="user" #userInput value="{{ booking.traveler }}">
+                        </div>
 
-                       <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value)">Send</button>
+
+                       <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value, userInput.value)">Send</button>
                      </form>
-
+                      {{user.name}}
                      </div>
                   </div>
                   <hr>
@@ -156,17 +164,26 @@
       </div>
     </tab>
     <tab heading="Bookings">
+      <div class = "col-sx-12 col-xs-offset-4">
+        <br>
       <div *ngIf="currentUser.bookings.length">
               <ul>
                 <li *ngFor="let booking of currentUser.bookings"> {{ booking.city&nbsp;}} </li>
               </ul>
       </div>
-      <div class="itinerary-link">
-        <p><a [routerLink]="['contact']"> Make itinerary</a></p>
-      </div>
+    
+    </div>
     </tab>
 
-    <tab heading="Reviews">Reviews</tab>
+    <tab heading="Agendas">
+      <div class = "col-sx-12 col-xs-offset-8">
+      <div *ngIf="currentUser.agendas.length">
+        <ul>
+          <li *ngFor="let agenda of currentUser.agendas"> {{ agenda.journeyTitle&nbsp;}} </li>
+        </ul>
+      </div>
+      </div>
+    </tab>
 
   </tabset>
 

@@ -20,10 +20,12 @@
 }
 .tabset {
   float: right;
-    background-color: white;
+  background-color: white;
 }
 
-
+p{
+  margin-left: 10px;
+}
 .details {
   margin-top: 30px;
 }
@@ -33,4 +35,8 @@
 
 .button{
   width: 100%;
+}
+
+.col-sx-12{
+  margin-top: 10px;
 }

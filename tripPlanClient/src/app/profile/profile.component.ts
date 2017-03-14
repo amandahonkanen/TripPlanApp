@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
 
   newAgenda = {
     request: '',
+    user: '',
+    journeyTitle: '',
     breakfast1: '',
     breakfast2: '',
     breakfast3: '',
@@ -37,7 +39,6 @@ export class ProfileComponent implements OnInit {
     eveningActivity1: '',
     eveningActivity2: '',
     eveningActivity3: '',
-    //  request
   }
 
   currentUser;
@@ -74,11 +75,11 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  makeAgenda(bookingId) {
-    console.log("new Agenda", this.newAgenda);
-    console.log("newAgenda:",this.newAgenda.request)
+
+  makeAgenda(bookingId, userId) {
     this.newAgenda.request = bookingId
-    console.log("booking_id", this.booking._id)
+    this.newAgenda.user = userId
+    // console.log("booking_id", this.booking._id)
     console.log("new Agenda after", this.newAgenda);
     this.user.makeAgenda(this.newAgenda)
       .subscribe(result => {

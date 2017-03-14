@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../model/user');
+const Agenda = require('../model/agenda');
 const upload = require('../config/multer');
 
 
@@ -43,6 +44,7 @@ router.get('/:id', (req, res) => {
   //   });
   User.findOne({_id: req.params.id})
       .populate("bookings")
+      .populate("agendas")
       .exec((err, users) => {
          if (err) {
            next(err);

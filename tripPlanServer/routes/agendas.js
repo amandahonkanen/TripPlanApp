@@ -19,6 +19,8 @@ router.get('/', function(req, res, next) {
 router.post('/', (req, res, next) => {
 
  const request            = req.body.request;
+ const user               = req.body.user;
+ const journeyTitle       = req.body.journeyTitle;
  const breakfast1         = req.body.breakfast1;
  const breakfast2         = req.body.breakfast2;
  const breakfast3         = req.body.breakfast3;
@@ -41,6 +43,8 @@ router.post('/', (req, res, next) => {
 
   var newAgenda = new Agenda({
     request,
+    user,
+    journeyTitle,
     breakfast1,
     breakfast2,
     breakfast3,
@@ -66,14 +70,20 @@ router.post('/', (req, res, next) => {
       res.status(400).json({ message: err });
 
     } else {
-      Request.findByIdAndUpdate({_id: agenda._id },{$push: { agenda: agenda._id }}, (err) => {
+      console.log(agenda._id);
+      Request.findByIdAndUpdate({_id: request },{$push: { agenda: agenda._id }}, (err) => {
         if (err) {
           console.log("GOT AN ERROR1");
           next(err);
-          } else {
+        } else { User.findByIdAndUpdate({_id: user},{$push: { agendas: agenda._id }}, (err) => {
+          if (err) {
+            console.log("GOT AN ERROR2");
+            next(err);
+          }  else {
             Agenda
             .findOne({_id: agenda._id})
             .populate("request")
+            .populate("user")
             .exec((err, agenda) => {
               if (err) {
                 next(err);
@@ -84,7 +94,10 @@ router.post('/', (req, res, next) => {
           });
         }
       });
-    });
+    }
+  });
+
+});
 
 
 router.get('/received'), (req, res, next) => {
@@ -98,18 +111,40 @@ router.get('/received'), (req, res, next) => {
           return;
           }
 
+          User
+         .findOne({_id: req.user._id})
+         .populate("agendas")
+         .exec((err, user) => {
+           if (err) {
+             next(err);
+             return;
+             }
+
           Agenda
-          .find({_id: req.agenda._id})
+          .find({_id: req.request._id})
           .populate("request")
+          .populate("user")
           .exec((err, agenda) => {
             if (err) {
               next(err);
               return;
             }
-            res.json(request, agenda);
+
+            Agenda
+            .find({_id: req.user._id})
+            .populate("user")
+            .populate("request")
+            .exec((err, agenda) => {
+              if (err) {
+                next(err);
+                return;
+              }
+            res.json(request, agenda, user);
           });
       });
- }
+ });
+ });
+  }
 
 
 

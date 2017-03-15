@@ -15,12 +15,26 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// router.get('/day', (req, res)=> {
+//   let day = req.query.day;
+//   Agenda.find({day: {"$in" : [day]}})
+//     .exec((err, agendas) => {
+//       if (err) {
+//         return res.send(err);
+//       }
+//       return res.json(agendas);
+//     });
+//   });
+
 
 router.post('/', (req, res, next) => {
 
+  console.log(req.body)
+
  const request            = req.body.request;
  const user               = req.body.user;
- const journeyTitle       = req.body.journeyTitle;
+ const day                = req.body.day;
+ const city               = req.body.city;
  const breakfast1         = req.body.breakfast1;
  const breakfast2         = req.body.breakfast2;
  const breakfast3         = req.body.breakfast3;
@@ -44,7 +58,8 @@ router.post('/', (req, res, next) => {
   var newAgenda = new Agenda({
     request,
     user,
-    journeyTitle,
+    day,
+    city,
     breakfast1,
     breakfast2,
     breakfast3,

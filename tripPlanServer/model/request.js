@@ -6,6 +6,7 @@ const User          = require("./user");
 const requestSchema = new Schema({
   startDate       : Date,
   endDate         : Date,
+  name            : String,
   city            : String,
   traveler        : {type: Schema.Types.ObjectId, ref: 'User'},
   expert          : {type: Schema.Types.ObjectId, ref: 'User'},

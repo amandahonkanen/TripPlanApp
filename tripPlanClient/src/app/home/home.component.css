@@ -27,4 +27,9 @@ video {
  border-radius: 5px;
  border:none;
  background-color: rgb(255, 146, 152) ;
+
+}
+
+#search-button:hover {
+  background-color: #464775;
 }

@@ -5,7 +5,8 @@ const Request          = require("./request");
 const agendaSchema = new Schema({
   request            : {type: Schema.Types.ObjectId, ref: 'Request'},
   user               : {type: Schema.Types.ObjectId, ref: 'User'},
-  journeyTitle       : String,
+  city               : String,
+  day                : Number,
   breakfast1         : String,
   breakfast2         : String,
   breakfast3         : String,

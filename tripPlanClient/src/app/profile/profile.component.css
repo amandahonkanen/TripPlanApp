@@ -25,6 +25,14 @@
   float: left;
 }
 
+#userDescription {
+  font-size: 18px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+#user-name-profile{
+text-transform: uppercase;
+}
 
 #userDescription {
   font-size: 0.800em;
@@ -47,9 +55,6 @@ text-transform: uppercase;
 }
 
 
-.details p {
-}
-
 
 .bookings {
   margin-top: 20px;
@@ -58,6 +63,7 @@ text-transform: uppercase;
 
 .bookings li {
   margin-bottom: 20px;
+
 }
 
 
@@ -65,14 +71,10 @@ text-transform: uppercase;
   margin-top: 20px;
 }
 
-
 .links {
   color: #464775;
 }
 
-
-.tabset {
-}
 
 
 .tab-body{
@@ -99,4 +101,10 @@ text-transform: uppercase;
 
 .button{
   width: 100%;
+}
+
+
+.panel{
+  border: none;
+
 }

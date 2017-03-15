@@ -35,10 +35,9 @@
       <div class="bookings" *ngIf="currentUser.bookings.length">
 
               <ul>
-                  <li *ngFor="let booking of currentUser.bookings"> <a [routerLink]="['/request', booking._id]">{{booking.name}}</a></li>
+                  <li *ngFor="let booking of currentUser.bookings"> <a [routerLink]="['/request', booking._id]">{{booking.city}}</a></li>
               </ul>
               <br>
-
         </div>
       </div>
 
@@ -96,12 +95,33 @@
 
     <tab heading="Agendas">
       <div class = "col-sx-12 col-xs-offset-8">
-      <div *ngIf="currentUser.agendas.length">
+        <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Destination City</th>
+                <th>Day</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="currentUser.agendas.length">
+              <tr *ngFor="let agenda of currentUser.agendas">
+                <td ><a [routerLink]="['/']">{{agenda.city&nbsp;}}</a> </td>
+                <td >{{ agenda.day&nbsp;}}</td>
+              </tr>
+             </tbody>
+           </table>
+         </div>
+      </div>
+    </div>
+      <!-- <div *ngIf="currentUser.agendas.length">
         <ul>
-          <li *ngFor="let agenda of currentUser.agendas"> {{ agenda.journeyTitle&nbsp;}} </li>
+          <li *ngFor="let agenda of currentUser.agendas"><a [routerLink]="['/']" >{{agenda.city&nbsp;}} Day: {{ agenda.day&nbsp;}}</a> </li>
         </ul>
-      </div>
-      </div>
+      </div>-->
+    </div>
+
     </tab>
 
   </tabset>

@@ -4,12 +4,14 @@
   <!-- <div *ngIf="users.city !== cityName">
     <p>No experts in this location yet! Try a different city!</p>
   </div> -->
-<div class= "row">
-  <div class= "col-sm-6 ">
-    <label for="InputName"> Search by Interests: </label>
-    <input id="Inputinterests" placeholder="Interest" type="text" [(ngModel)]="pattern">
+
+  <div class="row">
+    <div class="userlist-search">
+      <label for="InputName"> Search Name: </label>
+      <input id="InputName" placeholder="Name" type="text" [(ngModel)]="pattern">
+    </div>
   </div>
-</div>
+
 
 
 <div class="container-fluid">

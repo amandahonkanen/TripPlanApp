@@ -1,0 +1,66 @@
+currentuser id: {{ quote._id }}
+currentuser request id:{{ quote.bookings}}
+traveler :{{ traveler}}
+<form>
+  <div class="form-group">
+    <label for="Inputday">Day</label>
+    <input type="text" class="form-control" placeholder="e.g. Day 1" [(ngModel)]="newAgenda.day" name="day">
+  </div>
+  <div class="form-group">
+    <label for="Inputcity">City</label>
+    <input type="text" class="form-control" placeholder="City" [(ngModel)]="newAgenda.city" name="city">
+  </div>
+  <div class="form-group">
+    <label for="InputBreakfast">Breakfast Options</label>
+    <input type="text" class="form-control"  placeholder="Breakfast 1" [(ngModel)]="newAgenda.breakfast1" name="breakfast">
+    <input type="text" class="form-control" placeholder="Breakfast 2" [(ngModel)]="newAgenda.breakfast2" name="breakfast">
+    <input type="text" class="form-control" placeholder="Breakfast 3" [(ngModel)]="newAgenda.breakfast3" name="breakfast">
+  </div>
+  <div class="form-group">
+    <label for="InputLunch">Lunch Options</label>
+    <input type="text" class="form-control" placeholder="Lunch 1" [(ngModel)]="newAgenda.lunch1" name="lunch1">
+    <input type="text" class="form-control" placeholder="Lunch 2" [(ngModel)]="newAgenda.lunch2" name="lunch2">
+    <input type="text" class="form-control" placeholder="Lunch 3" [(ngModel)]="newAgenda.lunch3" name="lunch3">
+  </div>
+  <div class="form-group">
+    <label for="InputDinner">Dinner Options</label>
+    <input type="text" class="form-control" placeholder="Dinner 1" [(ngModel)]="newAgenda.dinner1" name="dinner1">
+    <input type="text" class="form-control" placeholder="Dinner 2" [(ngModel)]="newAgenda.dinner2" name="dinner2">
+    <input type="text" class="form-control" placeholder="Dinner 3" [(ngModel)]="newAgenda.dinner3" name="dinner3">
+  </div>
+
+
+
+  <div class="form-group">
+    <label for="InputMorningActivity">Morning Activity Options</label>
+    <input type="text" class="form-control" placeholder="Morning Activity 1" [(ngModel)]="newAgenda.morningActivity1" name="MorningActivity1">
+    <input type="text" class="form-control" placeholder="Morning Activity 2" [(ngModel)]="newAgenda.morningActivity2" name="MorningActivity2">
+    <input type="text" class="form-control" placeholder="Morning Activity 3" [(ngModel)]="newAgenda.morningActivity3" name="MorningActivity3">
+  </div>
+  <div class="form-group">
+    <label for="InputAfternoonActivity">Afternoon Activity Options</label>
+    <input type="text" class="form-control" placeholder="Afternoon Activity 1" [(ngModel)]="newAgenda.afternoonActivity1" name="AfternoonActivity1">
+    <input type="text" class="form-control" placeholder="Afternoon Activity 2" [(ngModel)]="newAgenda.afternoonActivity2" name="AfternoonActivity2">
+    <input type="text" class="form-control" placeholder="Afternoon Activity 3" [(ngModel)]="newAgenda.afternoonActivity3" name="AfternoonActivity3">
+  </div>
+  <div class="form-group">
+    <label for="InputEveningActivity">Evening Activity Options</label>
+    <input type="text" class="form-control" placeholder="Evening Activity 1" [(ngModel)]="newAgenda.eveningActivity1" name="EveningActivity1">
+    <input type="text" class="form-control" placeholder="Evening Activity 2" [(ngModel)]="newAgenda.eveningActivity2" name="EveningActivity2">
+    <input type="text" class="form-control" placeholder="Evening Activity 3" [(ngModel)]="newAgenda.eveningActivity3" name="eveningActivity3">
+  </div>
+
+ <div class="form-group">
+    <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ quote.bookings }}">
+  </div>
+
+
+  <div class="form-group">
+     <input type="hidden" class="form-control" id="user" #userInput value="{{ traveler}}">
+   </div>
+
+  <!-- <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value, userInput.value)">Send</button> -->
+  <button type="submit" class="btn btn-default btn-primary" (click)="makeAgenda(myInput.value, userInput.value)">Send</button>
+</form>
+
+<hr>

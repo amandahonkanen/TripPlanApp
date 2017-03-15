@@ -1,0 +1,15 @@
+
+   <div class = "col-xs-12" >
+
+     <div (collapsed)="collapsed($event)"
+                         [collapse]="isCollapsed"
+                          (expanded)="expanded($event)">
+
+     <input #box (keyup.enter)="onEnter(box.value)" placeholder="For how many days?">
+
+  <div *ngFor="let item of onEnter(value)">
+    <app-agenda-form [quote]="currentUser" [traveler]="traveler"></app-agenda-form>
+  </div>
+
+</div>
+</div>

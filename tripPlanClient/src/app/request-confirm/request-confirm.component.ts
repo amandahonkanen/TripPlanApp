@@ -12,6 +12,13 @@ export class RequestConfirmComponent implements OnInit {
 
 
   request: any = {};
+  booking: any ={};
+  myInput;
+  value= '';
+  user;
+  show = false;
+
+  currentUser;
 
 
   constructor(
@@ -20,21 +27,45 @@ export class RequestConfirmComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService
     ) {
+      this.currentUser =  this.session.currentUser || {}
+
    }
 
   ngOnInit() {
     console.log("ngOninit Request Confirm")
     this.route.params.subscribe(params => {
+      console.log("request", params);
       this.getRequest(params['requestId']);
+      //
+      // this.route.params.subscribe(params => {
+      //   this.get(params['id']);
+      // });
 
     });
+  }
+
+  showComponent() {
+    this.show ? this.show = false : this.show = true;
   }
 
   getRequest(requestId) {
     this.userService.getRequest(requestId)
       .subscribe((request) => {
         this.request = request;
+        console.log("setting traveler", request.traveler)
+        this.session.setTraveller(request.traveler);
       });
   }
+
+  // get(id) {
+  //   this.user.get(id)
+  //     .subscribe((user) => {
+  //       this.currentUser = user;
+  //       console.log("user", user)
+  //     });
+  // }
+
+
+
 
   }

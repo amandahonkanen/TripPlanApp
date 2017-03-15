@@ -11,15 +11,16 @@ const userSchema = new Schema({
        enum : ['EXPERT', 'TRAVELER'],
        default : 'EXPERT'
    },
-  age          : Number,
-  interests    : String,
-  description  : String,
-  city         : Array,
-  languages    : Array,
-  bookings     : [{ type: Schema.Types.ObjectId, ref: 'Request' }],
+
+  age: Number,
+  interests: String,
+  description: String,
+  city: Array,
+  languages: Array,
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
   agendas      : [{ type: Schema.Types.ObjectId, ref: 'Agenda' }],
-  reviews      : [{ type: Schema.Types.ObjectId, ref: 'Review' }],
-  image        : String,
+  image: String,
 }, {
   timestamps: {
     createdAt: "created_at",

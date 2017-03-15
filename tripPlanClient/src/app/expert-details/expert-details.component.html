@@ -1,17 +1,17 @@
-
+<button [routerLink]="['/city']">Back</button>
 <div class="expert-page">
 <img class="image-circle" style="width: 150px"src="{{user.image}}" />
   <div class="expert-details">
-    <h5>Name:</h5>
-      <p>{{ user.name }}</p>
-    <h5>Age:</h5>
-      <p>{{ user.age }}</p>
-    <h5>Interests:</h5>
-      <p>{{ user.interests }}</p>
-    <h5>Languages:</h5>
-      <p>{{ user.languages }}</p>
-    <h5>Expertise location:</h5>
-      <p>{{ user.city }}</p>
+    <h5>{{ user.name }}</h5>
+      <p></p>
+    <h5>Age:  {{ user.age }}</h5>
+      <p></p>
+    <h5>Interests:  {{ user.interests }}</h5>
+      <p></p>
+    <h5>Languages:  {{ user.languages }}</h5>
+      <p></p>
+    <h5>Expertise location:  {{ user.city }}</h5>
+      <p></p>
   </div>
 </div>
 
@@ -21,7 +21,7 @@
 
 
 <div class="request-button">
-<button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button>
+<button class="request-button" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button>
  <!-- <button id="expertList" class="btn btn-success" (click)="goToRequest()"><a style="text-decoration:none; color:white;"> Contact {{ user.name }}</a></button> -->
 </div>
 

@@ -1,3 +1,4 @@
+<div>
 <h3>Request by {{request.name}}</h3>
 
 <p>{{request.startDate | date:"yMMMMEEEEd" }}</p>
@@ -6,31 +7,14 @@
 <p>{{request.whoIsTravelling}}</p>
 <p>{{request.mainInterests}}</p>
 <p>{{request.mustKnows}}</p>
+</div>
 
 
 
-<!-- <form>
-  <div class="form-group">
-    <label for="InputStartDate">Start Date:</label>
-    <input type="date" class="form-control" id="InputStartDate" placeholder="From" [(ngModel)]="newRequest.startDate" name="startDate">
-  </div>
-  <div class="form-group">
-    <label for="InputEndDate">End Date:</label>
-    <input type="date" class="form-control" id="InputEndDate" placeholder="To" [(ngModel)]="newRequest.endDate"  name="endDate">
-  </div>
-  <div class="form-group">
-    <label for="InputWhoIsTravelling">Who are you travelling with?</label>
-    <input type="text" class="form-control" id="InputWhoIsTravelling" placeholder="Friends, Couple, Solo, etc." [(ngModel)]="newRequest.whoIsTravelling" name="whoIsTravelling">
-  </div>
-  <div class="form-group">
-    <label for="InputMainInterests">What are your main interests:</label>
-    <input type="text" class="form-control" id="InputMainInterests" placeholder="Nightlife, Cultural, Food, etc." [(ngModel)]="newRequest.mainInterests" name="mainInterests" >
-  </div>
-  <div class="form-group">
-    <label for="InputMustKnows">Anything the expert MUST know about you:</label>
-    <input type="text" class="form-control" id="InputMustKnows" placeholder="Vegetarian, wheel chair accessibility, etc." [(ngModel)]="newRequest.mustKnows" name="mustKnows">
-  </div>
 
-
-  <button type="submit" class="btn btn-default btn-primary" (click)="request()">Send the Request</button>
-</form> -->
+<!-- <button class="btn btn-success"  [routerLink]="['create']">Plan Trip</button> -->
+<button class="btn btn-success" (click)="showComponent()">Plan Trip</button>
+<div *ngIf="show">
+  <app-create-agenda></app-create-agenda>
+</div>
+<!-- <router-outlet></router-outlet> -->

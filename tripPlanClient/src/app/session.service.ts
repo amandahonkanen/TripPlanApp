@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Rx';
 export class SessionService implements CanActivate {
   public token: string;
   public currentUser: Object;
+  public traveler: Object;
 
   isAuth: EventEmitter<any> = new EventEmitter();
 
@@ -48,6 +49,17 @@ export class SessionService implements CanActivate {
 
   isAuthenticated() {
     return this.token != null ? true : false;
+  }
+
+  setTraveller(travelerId) {
+    console.log("setTraveller: ", travelerId)
+    this.traveler = travelerId;
+    console.log("setTraveller: after", travelerId)
+  }
+
+  getTraveller() {
+    console.log("getTraveller: ", this.traveler)
+    return this.traveler;
   }
 
   signup(user) {

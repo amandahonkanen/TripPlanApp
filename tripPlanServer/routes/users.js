@@ -18,6 +18,7 @@ router.get('/city', (req, res)=> {
   });
 
 router.get('/', (req, res, next) => {
+  console.log("users queries param", req.query)
   User.find({})
     .exec((err, Users) => {
       if (err) {

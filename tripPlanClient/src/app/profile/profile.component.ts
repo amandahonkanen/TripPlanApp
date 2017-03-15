@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
   newAgenda = {
     request: '',
     user: '',
-    journeyTitle: '',
     breakfast1: '',
     breakfast2: '',
     breakfast3: '',
@@ -91,30 +90,6 @@ export class ProfileComponent implements OnInit {
 
   }
 
-
-
-  public isCollapsed:boolean = true;
-
-     public collapsed(event:any):void {
-      //  console.log(event);
-     }
-
-     public expanded(event:any):void {
-      //  console.log(event);
-     }
-
-     onEnter(value: string) {
-       this.value = value;
-      console.log(this.value);
-      this.numberValue = Number(value);
-      var items = [];
-      for(var i = 1; i <= this.numberValue; i++){
-        items.push(i);
-        console.log(items);
-      }
-      return items;
-
-    }
 
 
 }

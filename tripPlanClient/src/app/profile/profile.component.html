@@ -35,7 +35,7 @@
       <div class="bookings" *ngIf="currentUser.bookings.length">
 
               <ul>
-                  <li *ngFor="let booking of currentUser.bookings"> <a [routerLink]="['/request', booking._id]">{{booking.name}}</a></li>
+                  <li *ngFor="let booking of currentUser.bookings"> <a [routerLink]="['/request', booking._id]">{{booking.name}}</a></li>   
               </ul>
               <br>
 
@@ -122,6 +122,7 @@
         </ul>
       </div>-->
     </div>
+
     </tab>
 
   </tabset>

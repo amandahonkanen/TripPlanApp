@@ -59,17 +59,15 @@ text-transform: uppercase;
 .links {
   color: #464775;
 }
-.tabset {
-
-}
 
 .tab-body{
   background-color: white;
       width: 100%;
       table-layout: fixed;
 }
-.color {
-  color: black;
+
+p{
+  margin-left: 10px;
 }
 
 .details {
@@ -85,4 +83,5 @@ text-transform: uppercase;
 
 .panel{
   border: none;
+
 }

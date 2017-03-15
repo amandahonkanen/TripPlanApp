@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../model/user');
+const Agenda = require('../model/agenda');
 const upload = require('../config/multer');
 
 

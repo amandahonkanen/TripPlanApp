@@ -38,7 +38,6 @@ export class ProfileComponent implements OnInit {
     eveningActivity1: '',
     eveningActivity2: '',
     eveningActivity3: '',
-    //  request
   }
 
   currentUser;
@@ -74,6 +73,7 @@ export class ProfileComponent implements OnInit {
         console.log("user", user)
       });
   }
+
 
   makeAgenda(bookingId, userId) {
     this.newAgenda.request = bookingId

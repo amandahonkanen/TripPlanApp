@@ -19,6 +19,7 @@ import { RequestConfirmComponent } from './request-confirm/request-confirm.compo
 
 import { AvatarComponent} from './avatar/avatar.component';
 import { AgendaComponent} from './agenda/agenda.component';
+import { CreateAgendaComponent} from './create-agenda/create-agenda.component';
 
 
 
@@ -36,5 +37,7 @@ export const routes: Routes = [
     { path: 'city', component: UserlistComponent},
     { path: 'booked', component: RequestComponent},
     { path: 'request/:requestId', component: RequestConfirmComponent},
+    // { path: 'request/:requestId/', component: RequestConfirmComponent},
+
     { path: '**', redirectTo: '' }
 ];

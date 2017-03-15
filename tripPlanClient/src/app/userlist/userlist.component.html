@@ -13,7 +13,7 @@
     <div>
           <div class="col-sm-3" *ngFor="let user of users | filter: 'name': pattern; let i = index" >
             <div class="user"  *ngIf="user.role == 'EXPERT'">
-              <img class="image-circle" style="width: 150px"src="{{user.image}}" />
+              <img class="image-circle" src="{{user.image}}" />
                 <p> {{ user.name }} </p>
                 <p> {{ user.age }} </p>
                 <a [routerLink]="['/city', user._id]"> View Details </a>

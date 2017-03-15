@@ -58,6 +58,7 @@ export class UserService {
 
 //Get new Request
    getRequest(requestId) {
+    // console.log("here is my problem?")
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
     return this.http.get(`${this.BASE_URL}/request/${requestId}`, options)
@@ -86,6 +87,8 @@ export class UserService {
   makeAgenda(newAgenda) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
+    console.log(newAgenda)
+    console.log(this.BASE_URL)
     return this.http.post(`${this.BASE_URL}/agenda`, newAgenda)
     .map((res) => res.json())
     .catch((err) => Observable.throw(err));

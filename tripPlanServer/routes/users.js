@@ -17,6 +17,7 @@ router.get('/city', (req, res)=> {
   });
 
 router.get('/', (req, res, next) => {
+  console.log("users queries param", req.query)
   User.find({})
     .exec((err, Users) => {
       if (err) {
@@ -43,6 +44,7 @@ router.get('/:id', (req, res) => {
   //   });
   User.findOne({_id: req.params.id})
       .populate("bookings")
+      .populate("agendas")
       .exec((err, users) => {
          if (err) {
            next(err);

@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
 
   newAgenda = {
     request: '',
+    user: '',
     breakfast1: '',
     breakfast2: '',
     breakfast3: '',
@@ -74,11 +75,10 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  makeAgenda(bookingId) {
-    console.log("new Agenda", this.newAgenda);
-    console.log("newAgenda:",this.newAgenda.request)
+  makeAgenda(bookingId, userId) {
     this.newAgenda.request = bookingId
-    console.log("booking_id", this.booking._id)
+    this.newAgenda.user = userId
+    // console.log("booking_id", this.booking._id)
     console.log("new Agenda after", this.newAgenda);
     this.user.makeAgenda(this.newAgenda)
       .subscribe(result => {
@@ -90,30 +90,6 @@ export class ProfileComponent implements OnInit {
 
   }
 
-
-
-  public isCollapsed:boolean = true;
-
-     public collapsed(event:any):void {
-      //  console.log(event);
-     }
-
-     public expanded(event:any):void {
-      //  console.log(event);
-     }
-
-     onEnter(value: string) {
-       this.value = value;
-      console.log(this.value);
-      this.numberValue = Number(value);
-      var items = [];
-      for(var i = 1; i <= this.numberValue; i++){
-        items.push(i);
-        console.log(items);
-      }
-      return items;
-
-    }
 
 
 }

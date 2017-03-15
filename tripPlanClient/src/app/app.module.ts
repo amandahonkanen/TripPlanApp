@@ -26,6 +26,8 @@ import { RequestComponent } from './request/request.component';
 import { RequestConfirmComponent } from './request-confirm/request-confirm.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { AgendaComponent } from './agenda/agenda.component';
+import { CreateAgendaComponent } from './create-agenda/create-agenda.component';
+import { AgendaFormComponent } from './agenda-form/agenda-form.component';
 
 
 
@@ -46,7 +48,9 @@ import { AgendaComponent } from './agenda/agenda.component';
     RequestComponent,
     RequestConfirmComponent,
     AvatarComponent,
-    AgendaComponent
+    AgendaComponent,
+    CreateAgendaComponent,
+    AgendaFormComponent
 
 ],
 

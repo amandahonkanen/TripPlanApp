@@ -18,6 +18,7 @@ const userSchema = new Schema({
   languages: Array,
   bookings: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+  agendas      : [{ type: Schema.Types.ObjectId, ref: 'Agenda' }],
   image: String,
 }, {
   timestamps: {

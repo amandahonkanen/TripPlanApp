@@ -4,38 +4,31 @@
   <!-- <div *ngIf="users.city !== cityName">
     <p>No experts in this location yet! Try a different city!</p>
   </div> -->
-
-
-  <div class="row">
-    <div class="userlist-search">
-      <label for="InputName"> Search Name: </label>
-      <input id="InputName" placeholder="Name" type="text" [(ngModel)]="pattern">
-    <div>
-          <div class="col-sm-3" *ngFor="let user of users | filter: 'name': pattern; let i = index" >
-            <div class="user"  *ngIf="user.role == 'EXPERT'">
-              <img class="image-circle" style="width: 150px"src="{{user.image}}" />
-                <p> {{ user.name }} </p>
-                <p> {{ user.age }} </p>
-                <a [routerLink]="['/city', user._id]"> View Details </a>
-
-                <hr>
-            </div>
-          </div>
-
+<div class= "row">
+  <div class= "col-sm-6 ">
+    <label for="InputName"> Search by Interests: </label>
+    <input id="Inputinterests" placeholder="Interest" type="text" [(ngModel)]="pattern">
   </div>
+</div>
 
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let user of users | filter: 'interests': pattern; let i = index">
+            <div class="card" *ngIf="user.role == 'EXPERT'">
+              <div id="grad"></div>
+                <div class="avatar">
+                    <img src="{{user.image}}"  />
+                </div>
+                <div id="name">  <span>{{ user.name }}</span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ user.age }}  </div>
+                <p>
+                   {{ user.interests }}
+                 </p>
+                <p><button type="button" class="btn btn-default" [routerLink]="['/city', user._id]">View Details</button></p>
+                <div class="content">
 
-
-
-
-
-  <!-- <div *ngFor="let user of users | filter:filters">
-            <div *ngIf="user.role == 'HELPER'">
-              <h3> {{ user.name }} </h3>
-              <p> {{ user.email }} </p>
-              <h4> {{ user.slogan }} </h4>
-              <p> {{ user.description }} </p>
-              <p> {{ user.speciality }} </p>
-              <p> {{ user.role }} </p>
-              <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

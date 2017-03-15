@@ -11,7 +11,7 @@ import { SearchPipe } from '../pipes/search.pipe';
 export class UserlistComponent implements OnInit {
 
   users;
-  city: string
+  city: Array<String>=[];
 
 
   constructor(

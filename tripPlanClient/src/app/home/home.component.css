@@ -18,3 +18,13 @@ video {
   opacity: 0.9;
   margin-top: 50px;
 }
+
+#search-button {
+ height: 35px;
+ width: 120px;
+ font-size: 14px;
+ color: white;
+ border-radius: 5px;
+ border:none;
+ background-color: rgb(255, 146, 152) ;
+}

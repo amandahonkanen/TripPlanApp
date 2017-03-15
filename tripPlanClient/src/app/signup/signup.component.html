@@ -26,8 +26,10 @@
 					<option value="TRAVELER">You want to travel </option>
 				</select>
 				</div>
-
 	      <button type="submit" class="btn btn-default btn-primary" (click)="signup()">Signup</button>
+					<p class="error"> {{ error }} </p>
+				<br>
+				<p>Have an account? <a [routerLink]="['/login']"> Log In</a></p>
 	    </form>
 	  </div>
 	</div>

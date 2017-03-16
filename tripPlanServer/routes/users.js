@@ -8,7 +8,8 @@ const upload = require('../config/multer');
 
 router.get('/city', (req, res)=> {
   let city = req.query.name;
-  User.find({city: {"$in" : [city]}})
+  let regExCity = new RegExp(city, "i")
+  User.find({city: {"$in" : [regExCity]}})
     .exec((err, users) => {
       if (err) {
         return res.send(err);

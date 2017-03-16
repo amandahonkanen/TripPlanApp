@@ -9,19 +9,22 @@
 
 
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="userlist-search">
       <label for="InputName"> </label>
       <input id="InputName" placeholder="Search by interest..." type="text" [(ngModel)]="pattern">
     </div>
   </div>
+</div>
+
+<div class="container">
     <div class="row">
-        <div class="col-sm-4" *ngFor="let user of users | filter: 'interests': pattern; let i = index">
+        <div class="col-sm-3" *ngFor="let user of users | filter: 'interests': pattern; let i = index">
             <div class="card" *ngIf="user.role == 'EXPERT'">
               <div id="grad"></div>
                 <div class="avatar">
-                    <img src="{{user.image}}"  />
+                    <img src="{{user.image}}" />
                 </div>
                 <div id="name">  <span>{{ user.name }}</span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ user.age }}  </div>
                 <p>
@@ -34,4 +37,4 @@
             </div>
         </div>
     </div>
-</div>
+  </div>

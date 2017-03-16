@@ -20,7 +20,7 @@ a span {
   background-size: cover;
   margin-top: -20px;
   height: 400px;
-  background-image: url("https://dvdbash.files.wordpress.com/2013/08/wallpaper-5760x1200-chicago-sunrise-skyline-panorama-dvdbash-wordpress.jpg");
+  background-image: url("/assets/city.jpg");
 }
 
 
@@ -34,7 +34,7 @@ a span {
 
 
 #username {
-  margin-top: 300px;
+  margin-top: 280px;
   /*margin-left: 55px;*/
   font-size: 23px;
   color: white;
@@ -45,6 +45,7 @@ a span {
 #userDescription {
   font-size: 18px;
 font-family: 'Ubuntu', sans-serif;
+color: lightgray;
 }
 
 #user-name-profile{
@@ -107,12 +108,12 @@ text-transform: uppercase;
 }
 
 
-.button{
+.button {
   width: 100%;
 }
 
 
-.panel{
+.panel {
   border: none;
   width: 50%;
 

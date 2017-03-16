@@ -26,7 +26,8 @@ export class NavbarComponent implements OnInit {
 
           this.isAuth = isAuth;
 
-        });
+        })
+        
         this.user = JSON.parse(localStorage.getItem("user"))
 
   }

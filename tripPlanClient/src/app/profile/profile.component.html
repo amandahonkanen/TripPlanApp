@@ -1,26 +1,23 @@
-<ol class="breadcrumb">
-<li><a [routerLink]="['/']">Home</a></li>
-<li class="active">Dashboard</li>
-<!-- <li><a [routerLink]="['/']">Listings</a></li> -->
-</ol>
 
-<div class="container">
+
 
 <div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
-  <div class="user">
+  <div class="container-fluid">
+  <div class="col-xs-8 col-md-offset-5">
     <img class="image-circle" src="{{currentUser.image}}" />
     <div id="username">
     <p id="user-name-profile">{{ currentUser.name}}</p>
     <p id="userDescription">{{ currentUser.description}}</p>
   </div>
   </div>
+</div>
 
-
-
-
+<div class="container">
+  <div class="row">
 <div class="col-lg-6" class = "tab-body">
   <tabset class="tabset" [justified]="true">
     <tab class="color" heading="About">
+      <div class="col-xs-4 ">
       <div class="details">
           <p>Age: {{ currentUser.age}}</p>
           <p>Interests: {{ currentUser.interests}}</p>
@@ -31,7 +28,7 @@
               <p class="links"><a class="links" [routerLink]="['avatar']"> Add your avatar </a></p>
               <p class="links"><a class="links" [routerLink]="['edit']"> Add your details </a></p>
           </div>
-
+      </div>
       </div>
     </tab>
 
@@ -58,7 +55,7 @@
 
   </tabset>
 </div>
-
+</div>
 </div>
 
 
@@ -73,27 +70,26 @@
 
   <tabset class="tabset" [justified]="true">
     <tab heading="About">
-       <div class="details">
-         <p>Age: {{ currentUser.age}}</p>
+      <!-- <div class="details"> -->
+          <!-- <p>Age: {{ currentUser.age}}</p>
           <p>Interests: {{ currentUser.interests}}</p>
           <p>Description: {{ currentUser.description}}</p>
-          <p>Languages: {{ currentUser.languages}}</p>
+          <p>City: {{ currentUser.city}}</p>
+          <p>Languages: {{ currentUser.languages}}</p> -->
 
           <div class="links">
-              <p ><a class="links" [routerLink]="['avatar']"> Add your avatar </a></p>
-              <p><a class="links" [routerLink]="['edit']"> Add your details </a></p>
+              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
                 <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
           </div>
 
-      </div>
+      <!-- </div> -->
     </tab>
     <tab heading="Bookings">
       <div class = "col-sx-12 col-xs-offset-4">
         <br>
       <div *ngIf="currentUser.bookings.length">
               <ul>
-                <li *ngFor="let booking of currentUser.bookings"> {{ booking.city&nbsp;}}
-                </li>
+                <li *ngFor="let booking of currentUser.bookings"> {{ booking.city&nbsp;}} </li>
               </ul>
       </div>
 
@@ -133,5 +129,4 @@
 
   </tabset>
 
-</div>
 </div>

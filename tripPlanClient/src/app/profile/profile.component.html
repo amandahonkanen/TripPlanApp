@@ -70,19 +70,19 @@
 
   <tabset class="tabset" [justified]="true">
     <tab heading="About">
-      <!-- <div class="details"> -->
-          <!-- <p>Age: {{ currentUser.age}}</p>
+       <div class="details">
+         <p>Age: {{ currentUser.age}}</p>
           <p>Interests: {{ currentUser.interests}}</p>
           <p>Description: {{ currentUser.description}}</p>
-          <p>City: {{ currentUser.city}}</p>
-          <p>Languages: {{ currentUser.languages}}</p> -->
+          <p>Languages: {{ currentUser.languages}}</p>
 
           <div class="links">
-              <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
+              <p ><a class="links" [routerLink]="['avatar']"> Add your avatar </a></p>
+              <p><a class="links" [routerLink]="['edit']"> Add your details </a></p>
                 <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
           </div>
 
-      <!-- </div> -->
+      </div>
     </tab>
     <tab heading="Bookings">
       <div class = "col-sx-12 col-xs-offset-4">

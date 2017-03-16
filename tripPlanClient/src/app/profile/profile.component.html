@@ -1,26 +1,19 @@
-<ol class="breadcrumb">
-<li><a [routerLink]="['/']">Home</a></li>
-<li class="active">Dashboard</li>
-<!-- <li><a [routerLink]="['/']">Listings</a></li> -->
-</ol>
+<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
+  <div class="container-fluid">
+  <div class="col-xs-12 ">
+    <img class="image-circle" src="{{currentUser.image}}" />
+      <p id="username">{{ currentUser.name}}</p>
+      <p id="userDescription">{{ currentUser.description}}</p>
+    </div>
+  </div>
+
 
 <div class="container">
-
-<div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
-  <div class="user">
-    <img class="image-circle" src="{{currentUser.image}}" />
-    <div id="username">
-    <p id="user-name-profile">{{ currentUser.name}}</p>
-    <p id="userDescription">{{ currentUser.description}}</p>
-  </div>
-  </div>
-
-
-
-
+  <div class="row">
 <div class="col-lg-6" class = "tab-body">
   <tabset class="tabset" [justified]="true">
     <tab class="color" heading="About">
+      <div class="col-xs-4 ">
       <div class="details">
           <p>Age: {{ currentUser.age}}</p>
           <p>Interests: {{ currentUser.interests}}</p>
@@ -31,7 +24,7 @@
               <p class="links"><a class="links" [routerLink]="['avatar']"> Add your avatar </a></p>
               <p class="links"><a class="links" [routerLink]="['edit']"> Add your details </a></p>
           </div>
-
+      </div>
       </div>
     </tab>
 
@@ -58,19 +51,23 @@
 
   </tabset>
 </div>
-
+</div>
+</div>
 </div>
 
 
 
-
 <div class="profile-page" *ngIf="currentUser.role === 'TRAVELER'">
-  <div class="user">
+  <div class="container-fluid">
+  <div class="col-xs-12 ">
     <img class="image-circle" src="{{currentUser.image}}" />
-    <p id="username">{{ currentUser.name}}</p>
+      <p id="username">{{ currentUser.name}}</p>
+    </div>
   </div>
 
 
+<div class="container">
+  <div class="row">
   <tabset class="tabset" [justified]="true">
     <tab heading="About">
        <div class="details">
@@ -88,19 +85,15 @@
       </div>
     </tab>
     <tab heading="Bookings">
-      <div class = "col-sx-12 col-xs-offset-4">
         <br>
       <div *ngIf="currentUser.bookings.length">
               <ul>
                 <li *ngFor="let booking of currentUser.bookings"> {{ booking.city&nbsp;}} </li>
               </ul>
       </div>
-
-    </div>
     </tab>
 
     <tab heading="Agendas">
-      <div class = "col-sx-12 col-xs-offset-8">
         <div class="panel panel-default">
       <div class="panel-body">
         <div class="table-responsive">
@@ -120,7 +113,6 @@
            </table>
          </div>
       </div>
-    </div>
       <!-- <div *ngIf="currentUser.agendas.length">
         <ul>
           <li *ngFor="let agenda of currentUser.agendas"><a [routerLink]="['/']" >{{agenda.city&nbsp;}} Day: {{ agenda.day&nbsp;}}</a> </li>
@@ -131,6 +123,6 @@
     </tab>
 
   </tabset>
-
+</div>
 </div>
 </div>

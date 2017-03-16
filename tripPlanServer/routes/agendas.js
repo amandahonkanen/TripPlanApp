@@ -189,4 +189,23 @@ router.get('/:agendaId', (req, res, next) => {
 });
 
 
+/* DELETE a Request */
+router.delete('/:agendaId', (req, res) => {
+let agendaId = req.params.agendaId;
+console.log(agendaId);
+if(!mongoose.Types.ObjectId.isValid(agendaId)) {
+return res.status(400).json({ message: 'Specified id is not valid' });
+}
+
+Agenda.remove({ _id: agendaId }, (err) => {
+if (err) {
+  return res.send(err);
+}
+
+return res.json({
+  message: 'Request has been removed'
+});
+})
+});
+
 module.exports = router;

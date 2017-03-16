@@ -1,9 +1,41 @@
 .navbar {
   opacity: 0.6;
+  width: 100%;
+  height: 65px;
 }
 
 
 .navbar-brand {
   font-size: 20px;
   color: #464775;
+}
+
+
+.navbar-brand img{
+  z-index: 9999;
+  width: 20%;
+  padding: 0;
+  position: relative;
+  margin-top: -15px;
+  margin-left: 20px;
+  opacity: 1;
+}
+
+
+@media (max-width: 520px) {
+  .navbar-brand img {
+    margin-top: -18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .navbar-brand img {
+    margin-top: -25px;
+  }
+}
+
+@media (max-width:414px) {
+  .navbar-brand img {
+    margin-top: -55px;
+  }
 }

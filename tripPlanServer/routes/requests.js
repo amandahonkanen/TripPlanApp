@@ -126,5 +126,24 @@ router.get('/:requestId', (req, res, next) => {
       });
     });
 
+    /* DELETE a Request */
+router.delete('/:requestId', (req, res) => {
+  let requestId = req.params.requestId;
+console.log(requestId);
+  if(!mongoose.Types.ObjectId.isValid(requestId)) {
+    return res.status(400).json({ message: 'Specified id is not valid' });
+  }
+
+  Request.remove({ _id: requestId }, (err) => {
+    if (err) {
+      return res.send(err);
+    }
+
+    return res.json({
+      message: 'Request has been removed'
+    });
+  })
+});
+
 
 module.exports = router;

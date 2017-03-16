@@ -58,6 +58,14 @@ export class RequestConfirmComponent implements OnInit {
       });
   }
 
+
+  removeRequest(requestId) {
+    console.log("remove Request", this.request._id)
+    	this.userService.removeRequest(this.request._id)
+      .subscribe(() => {
+        this.router.navigate(['']);
+      });
+	}
   // get(id) {
   //   this.user.get(id)
   //     .subscribe((user) => {

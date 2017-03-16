@@ -85,6 +85,13 @@ export class UserService {
 
   }
 
+  removeRequest(requestId) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(`${this.BASE_URL}/request/${requestId}`, options)
+      .map((res) => res.json());
+  }
+
   makeAgenda(newAgenda) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
@@ -103,6 +110,13 @@ export class UserService {
    return this.http.get(`${this.BASE_URL}/agenda/${agendaId}`, options)
      .map((res) => res.json())
 
+ }
+
+ removeAgenda(agendaId) {
+   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+   let options = new RequestOptions({ headers: headers });
+   return this.http.delete(`${this.BASE_URL}/agenda/${agendaId}`, options)
+     .map((res) => res.json());
  }
 
 }

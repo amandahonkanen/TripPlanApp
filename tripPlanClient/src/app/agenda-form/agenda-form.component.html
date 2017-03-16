@@ -1,6 +1,6 @@
-currentuser id: {{ quote._id }}
-currentuser request id:{{ quote.bookings}}
 traveler :{{ traveler}}
+request: {{request}}
+
 <form>
   <div class="form-group">
     <label for="Inputday">Day</label>
@@ -51,7 +51,7 @@ traveler :{{ traveler}}
   </div>
 
  <div class="form-group">
-    <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ quote.bookings }}">
+    <input type="text" type="hidden" class="form-control" id="request" #myInput name="request" value="{{ request }}">
   </div>
 
 

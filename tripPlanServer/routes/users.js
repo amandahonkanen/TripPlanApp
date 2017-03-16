@@ -64,11 +64,9 @@ router.put('/:id', (req, res) => {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
 
-  console.log("req body ", typeof req.body.city);
 
-  let cities = req.body.city.split(",");
-
-  console.log(cities);
+  // let cities = req.body.city.split(",");
+  // let cities = req.body.city.split(",").map(function(city){return city.replace(/\s/g, "")});
 
 
   const userToUpdate = {
@@ -79,7 +77,7 @@ router.put('/:id', (req, res) => {
     age: req.body.age,
     interests: req.body.interests,
     description: req.body.description,
-    city: cities,
+    city: req.body.city,
     languages: req.body.languages
   };
 

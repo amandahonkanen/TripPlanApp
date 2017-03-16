@@ -46,8 +46,16 @@
                   <p><span>Languages:&nbsp;&nbsp;</span> {{ user.languages }}</p>
                   <p><span>Expertise location:&nbsp;&nbsp;</span>{{user.city }}</p>
                 </div>
+
+                <div *ngIf="!isAuth">
+                  <p><button [routerLink]="['/login']">Log in to request agenda</button></p>
+                </div>
+                <div *ngIf="isAuth">
                   <p><button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button></p>
                 </div>
+                <!-- <div *ngIf="currentUser === 'EXPERT'">
+                  <p><button [routerLink]="['/signup']">Sign up as a traveler to request!</button></p>
+                </div> -->
 
             </div>
 

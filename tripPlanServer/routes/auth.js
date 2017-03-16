@@ -16,23 +16,23 @@ router.post("/login", function(req, res) {
   if(req.body.username && req.body.password){
     var username = req.body.username;
     var password = req.body.password;
-
   }
 
   if (username === "" || password === "") {
-    res.status(401).json({message:"fill up the fields"});
+    console.log("FILL FIELDS");
+    res.json({message:"fill up the fields"});
     return;
   }
 
   User.findOne({ "username": username }, (err, user)=> {
 
-  	if( ! user ){
-	    res.status(401).json({message:"no such user found"});
+  	if(!user){
+	    res.json({message:"no such user found"});
 	  } else {
       bcrypt.compare(password, user.password, function(err, isMatch) {
-        console.log(isMatch);
+        console.log("idMatch", isMatch);
         if (!isMatch) {
-          res.status(401).json({message:"passwords did not match"});
+          res.json({message:"passwords did not match"});
         } else {
           var payload = {id: user._id};
           var token = jwt.sign(payload, jwtOptions.secretOrKey);

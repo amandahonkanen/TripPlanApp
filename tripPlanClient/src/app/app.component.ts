@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { SessionService } from './session.service';
-
+import { ToastsManager} from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,12 @@ import { SessionService } from './session.service';
 export class AppComponent {
   title = 'app works!';
 
-  constructor(private session: SessionService){
+  constructor(
+    private session: SessionService,
+    public toastr: ToastsManager,
+    vRef: ViewContainerRef
+  ){
+    this.toastr.setRootViewContainerRef(vRef)
 
     if(localStorage.getItem("token")){
       this.session.sendToken()

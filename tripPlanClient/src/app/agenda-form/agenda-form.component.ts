@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { SessionService } from "../session.service";
+import { ToastsManager} from 'ng2-toastr/ng2-toastr';
+
 
 @Component({
   selector: 'app-agenda-form',
@@ -11,6 +13,8 @@ import { SessionService } from "../session.service";
 export class AgendaFormComponent implements OnInit {
   @Input() quote: any;
   @Input() traveler: any;
+  @Input() request: any;
+
 
   agenda: any = {};
   booking: any ={};
@@ -22,7 +26,8 @@ export class AgendaFormComponent implements OnInit {
 newAgenda = {
   request: '',
   user: '',
-  journeyTitle: '',
+  day: '',
+  city: '',
   breakfast1: '',
   breakfast2: '',
   breakfast3: '',
@@ -50,6 +55,7 @@ constructor(
   private user: UserService,
   private router: Router,
   private route: ActivatedRoute,
+  private toastr: ToastsManager
   )
   {
   // this.currentUser =  this.session.currentUser || {}
@@ -79,7 +85,7 @@ makeAgenda(bookingId, userId) {
     .subscribe(result => {
        console.log("result agenda ", result)
        console.log("REQ", this.newAgenda.request);
-
+       this.toastr.success("One day of the agenda has been sent!")
       //  this.router.navigate(['users', this.currentUser]);
      },
      (error) => { console.log(error)}

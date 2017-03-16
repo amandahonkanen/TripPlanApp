@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   myInput;
   value= '';
   numberValue;
+  currentUser;
 
   newAgenda = {
     request: '',
@@ -40,7 +41,6 @@ export class ProfileComponent implements OnInit {
     eveningActivity3: '',
   }
 
-  currentUser;
 
   constructor(
     private session: SessionService,
@@ -56,6 +56,7 @@ export class ProfileComponent implements OnInit {
     console.log("ngOninit profile")
     this.route.params.subscribe(params => {
       this.get(params['id']);
+    console.log("params", params);
     });
 
     // this.newAgenda.request = this.booking._id
@@ -89,7 +90,6 @@ export class ProfileComponent implements OnInit {
      );
 
   }
-
 
 
 }

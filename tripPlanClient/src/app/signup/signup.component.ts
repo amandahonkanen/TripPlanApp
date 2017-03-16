@@ -6,8 +6,7 @@ import { UserService} from '../user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
-  providers: [UserService, SessionService]
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
@@ -34,15 +33,11 @@ export class SignupComponent implements OnInit {
       .subscribe(result => {
           if (result === true) {
             let user_id = JSON.parse(localStorage.getItem("user"))._id
-            console.log(user_id)
             // login successful
-              // login successful
-              console.log('result ok', result);             
               this.router.navigate(['users', user_id]);
           } else {
-          		console.log('result ko', result);
               // login failed
-              // this.error = 'Username or password is incorrect';
+              this.error = 'Username or password is incorrect';
           }
       });
   }

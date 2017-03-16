@@ -28,6 +28,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { AgendaComponent } from './agenda/agenda.component';
 import { CreateAgendaComponent } from './create-agenda/create-agenda.component';
 import { AgendaFormComponent } from './agenda-form/agenda-form.component';
+import { ToastModule} from 'ng2-toastr/ng2-toastr';
 
 
 
@@ -60,7 +61,8 @@ import { AgendaFormComponent } from './agenda-form/agenda-form.component';
     HttpModule,
     RouterModule.forRoot(routes),
     TabsModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    ToastModule.forRoot()
   ],
   providers: [SessionService, UserService, BookingService],
   bootstrap: [AppComponent]

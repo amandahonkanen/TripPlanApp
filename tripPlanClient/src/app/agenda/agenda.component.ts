@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AgendaComponent implements OnInit {
 
-
+agenda: any = {};
 
   constructor(
     private session: SessionService,
@@ -22,7 +22,17 @@ export class AgendaComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.getAgenda(params['agendaId']);
+    });
 }
 
+getAgenda(agendaId){
+  this.user.getAgenda(agendaId)
+    .subscribe((agenda) => {
+      this.agenda = agenda;
+      console.log("agenda", this.agenda)
+    });
+}
 
 }

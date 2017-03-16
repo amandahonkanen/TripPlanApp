@@ -95,4 +95,13 @@ export class UserService {
 
   }
 
+  getAgenda(agendaId) {
+   // console.log("here is my problem?")
+   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+   let options = new RequestOptions({ headers: headers });
+   return this.http.get(`${this.BASE_URL}/agenda/${agendaId}`, options)
+     .map((res) => res.json())
+
+ }
+
 }

@@ -10,6 +10,7 @@ export class SessionService implements CanActivate {
   public token: string;
   public currentUser: Object;
   public traveler: Object;
+  public request: Object;
 
   isAuth: EventEmitter<any> = new EventEmitter();
 
@@ -62,6 +63,17 @@ export class SessionService implements CanActivate {
     return this.traveler;
   }
 
+  setRequest(requestId) {
+    console.log("setTraveller: ", requestId)
+    this.request = requestId;
+    console.log("setRequest: after", requestId)
+  }
+
+  getRequest() {
+    console.log("getRequest: ", this.request)
+    return this.request;
+  }
+
   signup(user) {
   	return this.http.post(`${this.BASE_URL}/signup`, user)
     .map((response: Response) => {
@@ -71,7 +83,6 @@ export class SessionService implements CanActivate {
         if (token) {
           // set token property
           this.currentUser = response.json().user
-          // console.log(this.currentUser)
           this.token = token;
           this.isAuth.emit(true);
           // store username and jwt token in local storage to keep user logged in between page refreshes
@@ -82,9 +93,10 @@ export class SessionService implements CanActivate {
         } else {
           // return false to indicate failed login
           return false;
+
         }
   		})
-  		.catch((err) => Observable.throw(err));
+  .catch((error) => Observable.throw(error));
   }
 
   login(user) {
@@ -109,7 +121,7 @@ export class SessionService implements CanActivate {
               return false;
             }
         })
-        .catch((err) => Observable.throw(err));
+        .catch((error) => Observable.throw(error));
   }
 
 

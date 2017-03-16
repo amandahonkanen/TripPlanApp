@@ -10,6 +10,7 @@ import { SessionService } from "../session.service";
 })
 export class CreateAgendaComponent implements OnInit {
     traveler: Object = {};
+    request: Object={};
     value= '';
     numberValue;
 
@@ -30,6 +31,8 @@ export class CreateAgendaComponent implements OnInit {
     ngOnInit() {
       this.traveler = this.session.getTraveller();
       console.log("Traveler from usa", this.traveler);
+      this.request = this.session.getRequest();
+      console.log("Request from usa", this.request);
     }
 
 

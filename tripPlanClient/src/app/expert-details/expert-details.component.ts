@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
+import { SessionService} from './../session.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -12,6 +13,9 @@ export class ExpertDetailsComponent implements OnInit {
 
   user: any = {};
   traveler: any ={};
+  public token: string;
+  currentUser;
+  isAuth: boolean = false;
 
 
   newRequest = {
@@ -32,32 +36,34 @@ export class ExpertDetailsComponent implements OnInit {
     constructor(
     	private router: Router,
     	private route: ActivatedRoute,
-      private userService: UserService
+      private userService: UserService,
+      private sessionService: SessionService
+        ) {
+          this.token = localStorage.getItem('token');
+          let userFromLocal = localStorage.getItem("user")
+          this.currentUser = JSON.parse(userFromLocal);
+          console.log("In constructor in service user", userFromLocal);
+          // console.log("In constructor in service token", this.token);
+          if(this.token != null) {
+            // console.log("true");
+            this.isAuth = true;
+          } else {
+            // console.log("false");
+            this.isAuth = false;
+          }
 
-    ) {}
+    }
 
+    ngOnInit() {
 
-
-      ngOnInit() {
      console.log(this.route)
    	  this.route.params.subscribe(params => {
       this.getUserDetails(params['id']);
-     });
-
-     this.traveler = JSON.parse(localStorage.getItem("user"))
-     let user = JSON.parse(localStorage.getItem("user"))
-     this.newRequest.traveler = this.traveler._id
-     this.newRequest.expert = this.user._id
+    })
 
 
+}
 
-     console.log("On ngInit",this.traveler.name,this.traveler._id)
-
-     console.log("traveler",this.newRequest.traveler)
-     console.log("expert",this.newRequest.expert)
-
-
-   }
 
    getUserDetails(id) {
 
@@ -72,6 +78,13 @@ export class ExpertDetailsComponent implements OnInit {
 
 
      booking(request) {
+
+       this.traveler = JSON.parse(localStorage.getItem("user"))
+       let user = JSON.parse(localStorage.getItem("user"))
+       this.newRequest.traveler = this.traveler._id
+       this.newRequest.expert = this.user._id
+
+
         console.log("user in booking(expert) ", this.user._id)
        this.newRequest.expert = this.user._id
      	 this.userService.booking(this.newRequest)
@@ -94,6 +107,5 @@ export class ExpertDetailsComponent implements OnInit {
         public expanded(event:any):void {
          //  console.log(event);
         }
-
 
  }

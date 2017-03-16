@@ -30,6 +30,7 @@
 
       </div>
     </tab>
+
     <tab class="color" heading="Bookings">
       <div class="col-xs-4 col-xs-offset-4">
       <div class="bookings" *ngIf="currentUser.bookings.length">
@@ -53,6 +54,7 @@
 
   </tabset>
 </div>
+
 </div>
 
 
@@ -67,19 +69,19 @@
 
   <tabset class="tabset" [justified]="true">
     <tab heading="About">
-      <div class="details">
-          <p>Age: {{ currentUser.age}}</p>
+      <!-- <div class="details"> -->
+          <!-- <p>Age: {{ currentUser.age}}</p>
           <p>Interests: {{ currentUser.interests}}</p>
           <p>Description: {{ currentUser.description}}</p>
           <p>City: {{ currentUser.city}}</p>
-          <p>Languages: {{ currentUser.languages}}</p>
+          <p>Languages: {{ currentUser.languages}}</p> -->
 
           <div class="links">
               <p><a [routerLink]="['avatar']"> Add your avatar </a></p>
                 <a [routerLink]="['/']"> Going somewhere? Get your custom journey schedule! </a>
           </div>
 
-      </div>
+      <!-- </div> -->
     </tab>
     <tab heading="Bookings">
       <div class = "col-sx-12 col-xs-offset-4">
@@ -107,7 +109,7 @@
             </thead>
             <tbody *ngIf="currentUser.agendas.length">
               <tr *ngFor="let agenda of currentUser.agendas">
-                <td ><a [routerLink]="['/']">{{agenda.city&nbsp;}}</a> </td>
+                <td ><a [routerLink]="['/agenda', agenda._id]">{{agenda.city&nbsp;}}</a> </td>
                 <td >{{ agenda.day&nbsp;}}</td>
               </tr>
              </tbody>

@@ -54,6 +54,7 @@ export class RequestConfirmComponent implements OnInit {
         this.request = request;
         console.log("setting traveler", request.traveler)
         this.session.setTraveller(request.traveler);
+        this.session.setRequest(request._id);
       });
   }
 

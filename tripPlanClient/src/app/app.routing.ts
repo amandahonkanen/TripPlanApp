@@ -30,7 +30,7 @@ export const routes: Routes = [
     { path: 'users/:id/edit', component: EditComponent },
     { path: 'users/:id/avatar', component: AvatarComponent },
     { path: 'users/:id', component: ProfileComponent},
-    { path: 'agenda', component: AgendaComponent},
+    { path: 'agenda/:agendaId', component: AgendaComponent},
     { path: 'city/:id', component: ExpertDetailsComponent },
     { path: 'user/:id', component: ExpertDetailsComponent },
     { path: 'signup', component: SignupComponent },

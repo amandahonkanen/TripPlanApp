@@ -166,14 +166,26 @@ router.get('/received'), (req, res, next) => {
 router.get('/:agendaId', (req, res, next) => {
   let agendaId = req.params.agendaId;
 
-  Agenda.findById(agendaId, (err, agenda) => {
-    console.log("Agenda:",agenda);
-    if(!mongoose.Types.ObjectId.isValid(req.params.requestId)) {
-      return res.status(400).json({ message: 'Specified id is not valid' });
-    }
-    return res.json(agenda);
-    });
+  // Agenda.findOne(agendaId, (err, agenda) => {
+  //   console.log("Agenda:",agenda);
+  //   if(!mongoose.Types.ObjectId.isValid(req.params.requestId)) {
+  //     return res.status(400).json({ message: 'Specified id is not valid' });
+  //   }
+  //   return res.json(agenda);
+  //   });
 
+    Agenda.findOne({_id: agendaId})
+        .populate("request")
+        .populate("user")
+        .exec((err, agenda) => {
+           if (err) {
+             next(err);
+             return;
+           } else {
+             res.status(200).json(agenda);
+             return;
+           }
+        });
 });
 
 

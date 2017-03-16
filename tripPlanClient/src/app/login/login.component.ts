@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { UserService } from './../user.service';
 import { Router } from '@angular/router';
+import { ToastsManager} from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers: [UserService]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private session: SessionService,
     private router: Router,
-    private users: UserService
+    private users: UserService,
+    private toastr: ToastsManager
   ) { }
 
   ngOnInit() {
@@ -35,9 +36,11 @@ export class LoginComponent implements OnInit {
                       console.log(user_id)
 			                // login successful
                       this.router.navigate(['users', user_id]);
+                      this.toastr.success("You logged in successfully")
 			         			} else {
 			                // login failed
-			               return this.error = "Username or password is incorrect";
+			                // this.error = "Username or password is incorrect";
+                      this.toastr.error("Username or password is incorrect");
 				            }
 				        });
   }

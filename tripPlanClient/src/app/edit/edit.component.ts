@@ -17,7 +17,8 @@ export class EditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router,
+    private sessionService: SessionService,
+    private router: Router
 
   ) {
 
@@ -46,7 +47,7 @@ export class EditComponent implements OnInit {
             interests: this.originalUser.interests,
             description: this.originalUser.description,
             languages: this.originalUser.languages,
-            city: this.originalUser.city,
+            city: this.originalUser.city
           };
         });
     });
@@ -55,16 +56,16 @@ export class EditComponent implements OnInit {
     }
 
   save() {
-    console.log(this.editUser);
+    // console.log(this.editUser);
     // console.log("EdiUser ", this.editUser);
-    console.log("edit user city: ", this.editUser);
-    console.log("original user: ", this.originalUser)
+    // console.log("edit user city: ", this.editUser);
+    // console.log("original user: ", this.originalUser)
     let user_id = this.originalUser._id;
     this.userService.edit(this.editUser).subscribe((user) =>{
       console.log(user)
       localStorage.removeItem("user")
       localStorage.setItem("user", JSON.stringify(user))
-      this.router.navigate(['users', user_id]);
+      this.router.navigate(['users', user_id])
     });
   }
 

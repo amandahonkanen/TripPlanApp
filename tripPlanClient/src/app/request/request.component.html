@@ -8,12 +8,17 @@
 
 {{user.bookings}} -->
 
-<p>Your request has been sent! You will receive your agenda in a couple of days!</p>
-<p>View your bookings here:</p> <a [routerLink]="['/users', user._id]">PROFILE</a>
-<p>Book another memorable experience?</p> <a [routerLink]="['/']">HOME</a>
+<div class="col-xs-12 ">
+  <img src="../assets/request-confirm.png">
+<span><p>You will receive your agenda in a couple of days!</p></span> <br>
+<p>View your bookings here:</p>
+<p>|&nbsp;&nbsp;&nbsp;&nbsp;<a [routerLink]="['/users', user._id]">PROFILE</a>&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+<span><p>Book another memorable experience?</p></span>
+<p>|&nbsp;&nbsp;&nbsp;&nbsp;<a [routerLink]="['/']">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;|</p>
 <!-- <p> Start: {{ request.startDate | date:"yMMMMEEEEd"}}</p>
 <p> End: {{ request.endDate | date:"yMMMMEEEEd"}}</p>
 <p> Who: {{request.whoIsTravelling}}</p>
 <p> Traveler: {{request.traveler}}</p>
 <p> Expert: {{request.expert}}</p>
 <p> Main Interests: {{request.mainInterests}}</p> -->
+</div>

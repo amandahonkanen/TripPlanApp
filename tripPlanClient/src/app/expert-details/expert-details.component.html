@@ -1,36 +1,3 @@
-
-<!-- <div class="container-fluid">
-<div class="row">
-    <div class = "col-md-6 ">
-    <img class="image-circle" src="{{user.image}}" />
-  <div class="expert-details">
-    <span>Name:&nbsp;&nbsp;&nbsp;</span>  <p>{{ user.name }}</p>
-    <span>Age:&nbsp;&nbsp;&nbsp;</span> <p>{{ user.age }}</p>
-    <span>Interests:&nbsp;&nbsp;&nbsp;</span> <p>{{ user.interests }}</p>
-    <span>Languages:&nbsp;&nbsp;&nbsp;</span> <p>{{ user.languages }}</p>
-    <span>Expertise location:&nbsp;&nbsp;&nbsp;</span><p>{{ user.city }}</p>
-
-<button [routerLink]="['/city']">Back</button>
-<div class="expert-page">
-<img class="image-circle" style="width: 150px"src="{{user.image}}" />
-  <div class="expert-details">
-    <h5>{{ user.name }}</h5>
-      <p></p>
-    <h5>Age:  {{ user.age }}</h5>
-      <p></p>
-    <h5>Interests:  {{ user.interests }}</h5>
-      <p></p>
-    <h5>Languages:  {{ user.languages }}</h5>
-      <p></p>
-    <h5>Expertise location:  {{ user.city }}</h5>
-      <p></p>
-
-  </div>
-</div>
-</div>
-</div> -->
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
@@ -50,12 +17,12 @@
                 <div *ngIf="!isAuth">
                   <p><button [routerLink]="['/login']">Log in to request agenda</button></p>
                 </div>
-                <div *ngIf="currentUser.role === 'TRAVELER'">
+                <div *ngIf="isAuth">
                   <p><button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button></p>
                 </div>
-                <div *ngIf="currentUser.role === 'EXPERT'">
+                <!-- <div *ngIf="currentUser === 'EXPERT'">
                   <p><button [routerLink]="['/signup']">Sign up as a traveler to request!</button></p>
-                </div>
+                </div> -->
 
             </div>
 

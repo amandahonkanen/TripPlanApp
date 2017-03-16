@@ -6,8 +6,10 @@
   <div class="col-xs-8 col-md-offset-5">
     <img class="image-circle" src="{{currentUser.image}}" />
     <div id="username">
-    <p id="user-name-profile">{{ currentUser.name}}</p>
-    <p id="userDescription">{{ currentUser.description}}</p>
+      <div class="row">
+        <p id="user-name-profile">{{ currentUser.name}}</p>
+        <p id="userDescription">{{ currentUser.description}}</p>
+      </div>
   </div>
   </div>
 </div>
@@ -57,17 +59,21 @@
 </div>
 </div>
 </div>
-
+</div>
 
 
 
 <div class="profile-page" *ngIf="currentUser.role === 'TRAVELER'">
-  <div class="user">
+  <div class="container-fluid">
+  <div class="col-xs-12 ">
     <img class="image-circle" src="{{currentUser.image}}" />
-    <p id="username">{{ currentUser.name}}</p>
+      <p id="username">{{ currentUser.name}}</p>
+    </div>
   </div>
 
 
+<div class="container">
+  <div class="row">
   <tabset class="tabset" [justified]="true">
     <tab heading="About">
        <div class="details">
@@ -85,19 +91,15 @@
       </div>
     </tab>
     <tab heading="Bookings">
-      <div class = "col-sx-12 col-xs-offset-4">
         <br>
       <div *ngIf="currentUser.bookings.length">
               <ul>
                 <li *ngFor="let booking of currentUser.bookings"> {{ booking.city&nbsp;}} </li>
               </ul>
       </div>
-
-    </div>
     </tab>
 
     <tab heading="Agendas">
-      <div class = "col-sx-12 col-xs-offset-8">
         <div class="panel panel-default">
       <div class="panel-body">
         <div class="table-responsive">
@@ -117,7 +119,6 @@
            </table>
          </div>
       </div>
-    </div>
       <!-- <div *ngIf="currentUser.agendas.length">
         <ul>
           <li *ngFor="let agenda of currentUser.agendas"><a [routerLink]="['/']" >{{agenda.city&nbsp;}} Day: {{ agenda.day&nbsp;}}</a> </li>
@@ -128,5 +129,6 @@
     </tab>
 
   </tabset>
-
+</div>
+</div>
 </div>

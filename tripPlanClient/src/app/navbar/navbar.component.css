@@ -16,7 +16,26 @@
   width: 20%;
   padding: 0;
   position: relative;
-  margin-top: -10px;
+  margin-top: -15px;
   margin-left: 20px;
   opacity: 1;
+}
+
+
+@media (max-width: 520px) {
+  .navbar-brand img {
+    margin-top: -18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .navbar-brand img {
+    margin-top: -25px;
+  }
+}
+
+@media (max-width:414px) {
+  .navbar-brand img {
+    margin-top: -55px;
+  }
 }

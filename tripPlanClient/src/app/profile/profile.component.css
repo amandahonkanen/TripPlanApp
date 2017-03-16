@@ -2,6 +2,7 @@
   height: 170px;
   width: 170px;
   margin-top: 50px;
+  margin-left: -90px;
   position: absolute;
   border-radius: 50%;
   box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2), 3px 3px 6px rgba(252,252,252,0.7);
@@ -18,7 +19,7 @@ a span {
 .container-fluid{
   background-size: cover;
   margin-top: -20px;
-  height: 300px;
+  height: 400px;
   background-image: url("https://dvdbash.files.wordpress.com/2013/08/wallpaper-5760x1200-chicago-sunrise-skyline-panorama-dvdbash-wordpress.jpg");
 }
 
@@ -27,12 +28,18 @@ a span {
   padding-top: 40px;
 }
 
+.col-xs-12{
+  text-align: center;
+}
+
 
 #username {
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 300px;
+  /*margin-left: 55px;*/
+  font-size: 23px;
+  color: white;
   font-family: 'Ubuntu', sans-serif;
-  float: left;
+  /*float: left;*/
 }
 
 #userDescription {
@@ -44,15 +51,6 @@ font-family: 'Ubuntu', sans-serif;
 text-transform: uppercase;
 }
 
-#userDescription {
-  font-size: 0.800em;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-
-#user-name-profile{
-text-transform: uppercase;
-}
 
 
 .tabset {
@@ -116,5 +114,6 @@ text-transform: uppercase;
 
 .panel{
   border: none;
+  width: 50%;
 
 }

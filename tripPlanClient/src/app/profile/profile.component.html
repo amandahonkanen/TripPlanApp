@@ -3,16 +3,13 @@
 
 <div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
   <div class="container-fluid">
-  <div class="col-xs-8 col-md-offset-5">
+  <div class="col-xs-12 ">
     <img class="image-circle" src="{{currentUser.image}}" />
-    <div id="username">
-      <div class="row">
-        <p id="user-name-profile">{{ currentUser.name}}</p>
-        <p id="userDescription">{{ currentUser.description}}</p>
-      </div>
+      <p id="username">{{ currentUser.name}}</p>
+      <p id="userDescription">{{ currentUser.description}}</p>
+    </div>
   </div>
-  </div>
-</div>
+
 
 <div class="container">
   <div class="row">

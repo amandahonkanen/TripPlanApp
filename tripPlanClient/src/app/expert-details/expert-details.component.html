@@ -50,12 +50,12 @@
                 <div *ngIf="!isAuth">
                   <p><button [routerLink]="['/login']">Log in to request agenda</button></p>
                 </div>
-                <div *ngIf="isAuth">
+                <div *ngIf="currentUser.role === 'TRAVELER'">
                   <p><button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button></p>
                 </div>
-                <!-- <div *ngIf="currentUser === 'EXPERT'">
+                <div *ngIf="currentUser.role === 'EXPERT'">
                   <p><button [routerLink]="['/signup']">Sign up as a traveler to request!</button></p>
-                </div> -->
+                </div>
 
             </div>
 

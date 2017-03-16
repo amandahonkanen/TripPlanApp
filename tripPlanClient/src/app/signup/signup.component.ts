@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
 import { UserService} from '../user.service';
+import { ToastsManager} from 'ng2-toastr/ng2-toastr';
+
+
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +25,9 @@ export class SignupComponent implements OnInit {
   constructor(
   	private session: SessionService,
     private router: Router,
-    private users: UserService
+    private users: UserService,
+    private toastr: ToastsManager
+
   ) { }
 
   ngOnInit() {
@@ -33,11 +38,14 @@ export class SignupComponent implements OnInit {
       .subscribe(result => {
           if (result === true) {
             let user_id = JSON.parse(localStorage.getItem("user"))._id
-            // login successful
+              // login successful
               this.router.navigate(['users', user_id]);
+              this.toastr.success("You signed up successfully")
+
           } else {
               // login failed
-              this.error = 'Username or password is incorrect';
+              this.toastr.error("Username already taken")
+
           }
       });
   }

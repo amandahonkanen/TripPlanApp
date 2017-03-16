@@ -1,7 +1,24 @@
+.userlist-search{
+  margin-left: 30px;
+}
+
+input[type=text] {
+    background-color: white;
+    background-image: url('http://www.freeiconspng.com/uploads/search-icon-png-2.png');
+    background-size: 15px;
+    background-position: 15px 5px;
+    background-repeat: no-repeat;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid gray;
+    padding-left: 40px;
+}
+
 #grad {
-  background: #4CA1AF; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #4CA1AF , #C4E0E5); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #4CA1AF , #C4E0E5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #4ecfb0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4ecfb0 , #6bd690, #8adc70); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4ecfb0 , #6bd690, #8adc70); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   background-size: cover;
   height: 295px;

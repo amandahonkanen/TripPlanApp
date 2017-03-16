@@ -81,7 +81,7 @@ router.post("/signup", (req, res, next) => {
       interests,
       description,
       languages,
-      city: [city],
+      city: city,
       image,
     });
 

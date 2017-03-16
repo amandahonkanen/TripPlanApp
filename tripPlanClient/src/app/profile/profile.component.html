@@ -4,6 +4,8 @@
 <!-- <li><a [routerLink]="['/']">Listings</a></li> -->
 </ol>
 
+<div class="container">
+
 <div class="profile-page" *ngIf="currentUser.role === 'EXPERT'">
   <div class="user">
     <img class="image-circle" src="{{currentUser.image}}" />
@@ -12,6 +14,8 @@
     <p id="userDescription">{{ currentUser.description}}</p>
   </div>
   </div>
+
+
 
 
 <div class="col-lg-6" class = "tab-body">
@@ -128,4 +132,5 @@
 
   </tabset>
 
+</div>
 </div>

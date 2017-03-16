@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
-import { SessionService} from './../session.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { SessionService } from "../session.service";
 
 @Component({
   selector: 'app-expert-details',
@@ -56,6 +55,7 @@ export class ExpertDetailsComponent implements OnInit {
 
     ngOnInit() {
 
+
      console.log(this.route)
    	  this.route.params.subscribe(params => {
       this.getUserDetails(params['id']);
@@ -101,7 +101,7 @@ export class ExpertDetailsComponent implements OnInit {
      public isCollapsed:boolean = true;
 
         public collapsed(event:any):void {
-         //  console.log(event);
+
         }
 
         public expanded(event:any):void {

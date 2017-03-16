@@ -6,8 +6,7 @@ import { UserService} from '../user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
-  providers: [UserService, SessionService]
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
@@ -37,7 +36,7 @@ export class SignupComponent implements OnInit {
             console.log(user_id)
             // login successful
               // login successful
-              console.log('result ok', result);             
+              console.log('result ok', result);
               this.router.navigate(['users', user_id]);
           } else {
           		console.log('result ko', result);

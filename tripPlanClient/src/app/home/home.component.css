@@ -10,7 +10,19 @@ video {
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
     background-size: cover;
+    background-repeat: repeat;
     transition: 1s opacity;
+}
+
+.info{
+    height: 300px;
+    /*z-index: 9999;*/
+    margin-top: 80px;
+    display: block;
+    background-color: white;
+    /*position: fixed;*/
+    width: 100%;
+    left: 0%;
 }
 
 
@@ -32,4 +44,17 @@ video {
 
 #search-button:hover {
   background-color: #464775;
+}
+
+
+.bottom{
+  height: 200px;
+  /*z-index: 9999;*/
+  margin-top: 500px;
+  display: inline-block;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  left: 0%;
+  padding: 50px;
 }

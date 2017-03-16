@@ -5,16 +5,17 @@
     <p>No experts in this location yet! Try a different city!</p>
   </div> -->
 
-  <div class="row">
-    <div class="userlist-search">
-      <label for="InputName"> Search Name: </label>
-      <input id="InputName" placeholder="Name" type="text" [(ngModel)]="pattern">
-    </div>
-  </div>
+
 
 
 
 <div class="container-fluid">
+  <div class="row">
+    <div class="userlist-search">
+      <label for="InputName"> </label>
+      <input id="InputName" placeholder="Search by interest..." type="text" [(ngModel)]="pattern">
+    </div>
+  </div>
     <div class="row">
         <div class="col-sm-4" *ngFor="let user of users | filter: 'interests': pattern; let i = index">
             <div class="card" *ngIf="user.role == 'EXPERT'">

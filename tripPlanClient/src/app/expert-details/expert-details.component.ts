@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { SessionService } from "../session.service";
 
 @Component({
   selector: 'app-expert-details',
@@ -32,7 +32,8 @@ export class ExpertDetailsComponent implements OnInit {
     constructor(
     	private router: Router,
     	private route: ActivatedRoute,
-      private userService: UserService
+      private userService: UserService,
+      private sessionService: SessionService,
 
     ) {}
 
@@ -88,7 +89,7 @@ export class ExpertDetailsComponent implements OnInit {
      public isCollapsed:boolean = true;
 
         public collapsed(event:any):void {
-         //  console.log(event);
+          
         }
 
         public expanded(event:any):void {

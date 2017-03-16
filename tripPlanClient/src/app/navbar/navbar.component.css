@@ -1,6 +1,9 @@
 .navbar {
   opacity: 0.6;
+  z-index: 999999;
 }
+
+
 .navbar-brand {
   font-size: 20px;
   color: #464775;

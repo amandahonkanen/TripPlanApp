@@ -64,11 +64,20 @@ router.put('/:id', (req, res) => {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
 
-  console.log("req body ", typeof req.body.city);
 
-  let cities = req.body.city.split(",");
+  console.log("city", req.body.city);
 
-  console.log(cities);
+  let cities = req.body.city
+  if (!(cities instanceof Array)) {
+    cities = cities.split(",").map(function(city){return city.replace(/\s/g, "")});
+
+  }
+  // let cities = JSON.parse(JSON.stringify(req.body.city));
+  console.log("cities", cities);
+
+
+  // console.log("error", err);
+
 
 
   const userToUpdate = {
@@ -76,16 +85,14 @@ router.put('/:id', (req, res) => {
     name: req.body.name,
     password: req.body.password,
     role: req.body.role,
-    age: req.body.age,
+    age: parseInt(req.body.age),
     interests: req.body.interests,
     description: req.body.description,
     city: cities,
     languages: req.body.languages
   };
 
-  // let city = req.body.split("", ",");
-
-  // User.updateOne({id: "req.params.id"}, { $split: [ "", "," ]});
+  console.log(" userToUpdate ", userToUpdate);
 
   User.findByIdAndUpdate(req.params.id, userToUpdate, {new: true}, (err, user) => {
     if (err) {

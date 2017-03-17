@@ -13,6 +13,7 @@ export class EditComponent implements OnInit {
 
   originalUser: any;
   editUser: Object = {};
+  currentUser: Object = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +24,9 @@ export class EditComponent implements OnInit {
   ) {
 
       this.editUser = localStorage.getItem("user");
-
-
+      let userFromLocal = localStorage.getItem("user")
+      this.currentUser = JSON.parse(userFromLocal);
+      console.log("user", this.currentUser)
    }
 
   ngOnInit() {

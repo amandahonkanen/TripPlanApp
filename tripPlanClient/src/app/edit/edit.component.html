@@ -12,7 +12,7 @@
     <label for="InputDescription">Description</label>
     <input type="text" class="form-control" id="InputDescription" placeholder="Description" [(ngModel)]="editUser.description" name="description">
   </div>
-  <div *ngIf="editUser === 'EXPERT' "class="form-group">
+  <div *ngIf="currentUser.role === 'EXPERT'" class="form-group">
     <label for="InputCity">Cities you are an expert on</label>
     <input type="text" class="form-control" id="InputCity" placeholder="City" [(ngModel)]="editUser.city" name="city" >
   </div>

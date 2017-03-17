@@ -1,48 +1,52 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12">
-            <div class="card" >
-              <div id="grad"></div>
-                <div class="avatar">
-                    <img src="{{user.image}}"  />
-                </div>
-                <div class="col-xs-6 col-xs-offset-2">
-                   <p><span>Name:&nbsp;&nbsp;</span> {{ user.name }}</p>
-                  <p> <span>Age:&nbsp;&nbsp;</span> {{ user.age }}</p>
-                  <p><span>Interests:&nbsp;&nbsp;</span> {{ user.interests }}</p>
-                  <p><span>Languages:&nbsp;&nbsp;</span> {{ user.languages }}</p>
-                  <p><span>Expertise location:&nbsp;&nbsp;</span>{{user.city }}</p>
-                </div>
-
-                <div *ngIf="!isAuth">
-                  <p><button [routerLink]="['/login']">Log in to request agenda</button></p>
-                </div>
-                <div *ngIf="currentUser.role === 'TRAVELER'">
-                  <p><button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button></p>
-                </div>
-                <div *ngIf="currentUser.role === 'EXPERT'">
-                  <p><button [routerLink]="['/signup']">Sign up as a traveler to request!</button></p>
-                </div>
+        <div class="col-xs-6 col-xs-offset-3" class="box">
+           <div class="card" >
+           <div class="row" class="details">
+             <div class="col-xs-6 col-xs-offset-3">
+                 <div class="avatar">
+                     <img src="{{user.image}}"  />
+                 </div>
+                <p><span>Name:&nbsp;&nbsp;</span> {{ user.name }}</p>
+                <p> <span>Age:&nbsp;&nbsp;</span> {{ user.age }}</p>
+                <p><span>Interests:&nbsp;&nbsp;</span> {{ user.interests }}</p>
+                <p><span>Languages:&nbsp;&nbsp;</span> {{ user.languages }}</p>
+                <p><span>Expertise location:&nbsp;&nbsp;</span>{{user.city }}</p>
+                <hr>
+                <p><span></span><em>"{{user.description }}"</em></p>
 
             </div>
+           </div>
+          </div>
+        </div>
+    </div>
+
+       <div class="col-xs-7 col-xs-offset-2">
+          <div *ngIf="!isAuth">
+            <p><button [routerLink]="['/login']">Log in to request agenda</button></p>
+          </div>
+          <div *ngIf="isAuth">
+            <p><button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button></p>
+          </div>
+      <!-- <div *ngIf="currentUser === 'EXPERT'">
+        <p><button [routerLink]="['/signup']">Sign up as a traveler to request!</button></p>
+      </div> -->
+
+      </div>
+
+
 
             <!-- <button class="btn btn-success" (click)="isCollapsed = !isCollapsed">Ask {{ user.name }} to Plan your Trip</button> -->
              <!-- <button id="expertList" class="btn btn-success" (click)="goToRequest()"><a style="text-decoration:none; color:white;"> Contact {{ user.name }}</a></button> -->
-            </div>
-        </div>
 
-
-
-
-
-<p id="seperate-line">_______________________________________________________________________________________</p>
+<!-- <p id="seperate-line">_______________________________________________________________________________________</p> -->
 
 <div class="request-form" (collapsed)="collapsed($event)"
     [collapse]="isCollapsed"
-     (expanded)="expanded($event)"
-     >
+     (expanded)="expanded($event)">
   <!-- <p>Traveler Name {{traveler.name}}</p>
   <p>Expert Name {{user.name}}</p> -->
+<div class="col-xs-6 col-xs-offset-3">
     <form>
       <div class="form-group">
         <label for="InputName">Name:</label>
@@ -81,4 +85,8 @@
 
       <button type="submit" class="btn btn-default btn-primary" (click)="booking(request)">Send the Request</button>
     </form>
+  </div>
+</div>
+
+
 </div>
